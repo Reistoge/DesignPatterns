@@ -5,7 +5,7 @@ import CreationalPatterns.FactoryMethod.Products.Product;
 
 public class BlueCreator extends Creator {
     public BlueCreator() {
-        product = new BlueProduct("default"); {};
+        product = new BlueProduct("default"); {}
     }
     @Override
     public Product create(String name) {

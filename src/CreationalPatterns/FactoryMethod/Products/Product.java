@@ -6,7 +6,8 @@ public abstract class Product {
 
     public abstract void setStyle();
     public abstract void functionality();
-    public String getName() {return name;};
+    public String getName() {return name;}
+
     public String getShape() {return shape;}
 
 

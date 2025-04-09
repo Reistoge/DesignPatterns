@@ -1,6 +1,6 @@
-package AbstractFactory.Sony;
+package CreationalPatterns.AbstractFactory.Sony;
 
-import AbstractFactory.AbstractProductVideoGameConsole;
+import CreationalPatterns.AbstractFactory.AbstractProductVideoGameConsole;
 
 public class Playstation5 implements AbstractProductVideoGameConsole {
 }

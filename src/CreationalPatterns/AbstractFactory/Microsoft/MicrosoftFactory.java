@@ -1,6 +1,8 @@
 package CreationalPatterns.AbstractFactory.Microsoft;
-import AbstractFactory.AbstractProductVideoGameConsole;
-import AbstractFactory.AbstractFactory;
+
+import CreationalPatterns.AbstractFactory.AbstractFactory;
+import CreationalPatterns.AbstractFactory.AbstractProductVideoGameConsole;
+
 public class MicrosoftFactory extends AbstractFactory {
 
 

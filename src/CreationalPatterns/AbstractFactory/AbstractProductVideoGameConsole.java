@@ -1,4 +1,4 @@
-package AbstractFactory;
+package CreationalPatterns.AbstractFactory;
 
 public interface AbstractProductVideoGameConsole {
 

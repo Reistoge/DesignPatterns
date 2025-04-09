@@ -1,6 +1,7 @@
 package CreationalPatterns.AbstractFactory.Microsoft;
 
-import AbstractFactory.AbstractProductVideoGameController;
+
+import CreationalPatterns.AbstractFactory.AbstractProductVideoGameController;
 
 public class XboxController implements AbstractProductVideoGameController {
 }

@@ -1,4 +1,6 @@
-package AbstractFactory;
+package CreationalPatterns.AbstractFactory;
+
+
 
 public abstract class AbstractFactory {
     public abstract AbstractProductVideoGameConsole createVideoGameConsole(); // create tv

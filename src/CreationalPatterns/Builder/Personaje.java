@@ -1,6 +1,5 @@
 package CreationalPatterns.Builder;
 
-import AbstractFactory.AbstractProductVideoGameConsole;
 
 public class Personaje {
     String nombre;

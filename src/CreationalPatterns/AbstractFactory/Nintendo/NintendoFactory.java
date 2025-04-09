@@ -1,6 +1,8 @@
-package AbstractFactory.Nintendo;
-import AbstractFactory.AbstractProductVideoGameConsole;
-import AbstractFactory.AbstractFactory;
+package CreationalPatterns.AbstractFactory.Nintendo;
+
+import CreationalPatterns.AbstractFactory.AbstractFactory;
+import CreationalPatterns.AbstractFactory.AbstractProductVideoGameConsole;
+
 public class NintendoFactory extends AbstractFactory {
 
 

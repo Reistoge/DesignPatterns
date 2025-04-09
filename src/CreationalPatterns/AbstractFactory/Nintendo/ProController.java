@@ -1,7 +1,6 @@
-package AbstractFactory.Nintendo;
+package CreationalPatterns.AbstractFactory.Nintendo;
 
-import AbstractFactory.AbstractProductVideoGameConsole;
-import AbstractFactory.AbstractProductVideoGameController;
+import CreationalPatterns.AbstractFactory.AbstractProductVideoGameController;
 
 public class ProController implements AbstractProductVideoGameController {
 

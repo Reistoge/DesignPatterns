@@ -1,6 +1,6 @@
-package AbstractFactory.Nintendo;
+package CreationalPatterns.AbstractFactory.Nintendo;
 
-import AbstractFactory.AbstractProductVideoGameConsole;
+import CreationalPatterns.AbstractFactory.AbstractProductVideoGameConsole;
 
 public class NintendoSwitch implements AbstractProductVideoGameConsole {
 

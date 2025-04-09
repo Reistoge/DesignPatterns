@@ -1,6 +1,8 @@
-package AbstractFactory.Sony;
-import AbstractFactory.AbstractProductVideoGameConsole;
-import AbstractFactory.AbstractFactory;
+package CreationalPatterns.AbstractFactory.Sony;
+
+import CreationalPatterns.AbstractFactory.AbstractFactory;
+import CreationalPatterns.AbstractFactory.AbstractProductVideoGameConsole;
+
 public class SonyFactory extends AbstractFactory {
 
 
