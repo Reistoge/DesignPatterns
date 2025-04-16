@@ -1,0 +1,13 @@
+You're developing a custom game editor for your
+2D game project. In the editor, the artist or level
+designer can browse through assets (images, sprites, animations)
+before placing them on the scene.
+
+These assets are large and stored remotely (in cloud storage or on disk),
+ and loading them all at once is too expensive in memory and time.
+
+Problem:
+You need to show a preview of the asset (maybe a thumbnail or a name),
+but only load the actual image when the user wants to use it.
+
+
