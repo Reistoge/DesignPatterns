@@ -102,7 +102,7 @@ class Descuento {
 }
 
 ✖️ Si queremos agregar otro tipo de descuento tendremos que
-   cambiar directamente la logica del metodo ````aplicar()````.
+   cambiar directamente la logica del metodo aplicar().
 ````
 ````java
 interface EstrategiaDescuento {
