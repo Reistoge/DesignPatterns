@@ -62,7 +62,7 @@ Este principio nos permite:
 Con esto no se busca eliminar el acoplamiento de una clase con otra, no hay problema en que una clase necesite de otras, especialmente de aquellas que usen servicios como estructura de datos, input u output, etc.
  
  ------
-## Principios SOLID </br>
+## Principios SOLID y otros </br>
 
 Recomendaciones a nivel practico que permiten a los desarrolladores seguir las propiedades de diseño, debido a esto cada principio esta ligado a una propiedad de diseño.
 
@@ -89,8 +89,7 @@ class ImpresoraReporte {
 
 ✔️ Delegando las responsabilidades en distintas clases obtenemos clases con responsabilidades unicas
 ````
-</br>
-
+ ----
 ### **O**pen-Closed (Extensión):
 Una clase debe estar cerrada a modificacion pero abierta a extension, en otras palabras, tu clase debe de tener la capacidad de poder agregar cosas pero sin tener que modificar la logica base de esta.
 ### Ejemplo
@@ -117,7 +116,7 @@ class DescuentoNavidad implements EstrategiaDescuento {
 ✔️ Ahora para agregar otro tipo de descuento se debe
     agregar una clase al sistema en vez de modificar alguna. 
 ````
-
+------
 ### **L**iskov substitution (Extensión):
 Todos los métodos sobrescritos en una sub clase deben seguir la misma lógica o funcionalidad que el método original de la super clase.
 Este principio nos permite separar y definir una buena jerarquia entre clases padres e hijas.
@@ -150,8 +149,7 @@ class Pinguino extends Animal {} // No extiende de Ave
    un tipo de Animal, de esta manera ya no tenemos
    problemas de implementacion u contrato 
 ````
-
-
+-------
 ### **I**nterface segregation (Cohesión):
 No se debe forzar a implementar metodos innecsarios, las interfaces deben de ser simples, pequeñas, cohesionadas y los contratos deben de ser estables y especificos para cada cliente. 
 Digamos que distintos tipos de clientes usan solamente una parte de la implementacion de una clase o interfaz para esto es mejor la division de interfaces complejas hacia más especificas y pequeñas, de esta forma hacemos que un cliente concreto tenga que interactuar con una interfaz concreta 
@@ -188,7 +186,7 @@ class ImpresoraBasica implements Impresora {
     tendran que solamente implementar las interfaces necesarias sin que alguna tenga
     metodos vacios o innecesarios. 
 ````
-
+-------
 ### **D**epency inversion (Acoplamiento):
 Este principio nos dice que prefiramos interfaces frente clases concretas ya que las interfaces son más estables, para lograr esto debemos de intercambiar las dependencias de clases concretas del cliente por interfaces o abstracciones, de esta manera mantenemos una dependencia estable entre la abstracción y el cliente.
 ### Ejemplo
@@ -224,6 +222,90 @@ class Auto {
     distintas implementaciones de Motor no habran problemas en
     Auto ya que esta depende solo de los contratos de la interfaz
     (acoplamiento estructural deseado).
+````
+----
+### Principle of Least Privilege 
+El principio de menor privilegio o Demeter brinda un conjunto de reglas para evitar problemas de encapsulamiento.
+Sostiene que la implementacion de un metodo en un clase debe solo invocar los invocar los siguientes otros métodos:
+
+* De su propia clase  
+* De objetos pasados como parámetros  
+* De objetos creados por el propio método 
+* De atributos de la clase del método
+Otra forma de entender este principio es no llamar a métodos de los objetos devueltos por otros métodos.
+El caso más común que debemos evitar son las cadenas de métodos, de la forma:
+````java
+a.getX().getY().getValue();
+✖️ Estamos accediendo a objetos internos de A encadenando llamadas.
+    Esto expone la estructura interna y rompe el encapsulamiento, haciendo que la
+    clase que hace esta llamada conozca demasiado sobre la estructura de otras.
+````
+y sustituirlas por funciones que realicen dicha acción:
+````java
+a.getXYValue();
+✔️ Creamos un metodo especifico en A el cual encapsula la logica en
+    como se tiene que devolver el valor que queremos sin tener que
+    depender o hacer llamadas directas del objeto Y.
+````
+-----
+### Composition over Inheritance 
+Una solucion basada en composicion sueler en la mayoria de los casos mejor una basada en herencia.
+¿Por qué?
+La herencia viola el encapsulamiento de las clases padre. La implementación de las subclases se vuelve tan acoplada a la implementación de la clase padre que cualquier cambio en estas últimas puede forzar modificaciones en las subclases.
+
+Debido a esto existen soluciones basadas en composicion las cuales tienen como objetivo reemplazar las soluciones basadas en herencia como el patron decorador ya que hoy en dia algunos lenguajes no soportan herencia.
+
+ 
+````java
+class BaseDeDatos {
+    public void conectar() {
+        System.out.println("Conectando a la base de datos...");
+    }
+}
+
+class Aplicacion extends BaseDeDatos {
+    public void iniciar() {
+        conectar();
+        System.out.println("Aplicación iniciada.");
+    }
+}
+class AplicacionSimple {
+    public void iniciar() {
+        System.out.println("Aplicación simple iniciada.");
+    }
+}
+ 
+✖️ Aunque se necesite los atributos de la base de datos, una aplicacion
+   no es una Base de datos, cambios u errores en la logica de la clase
+   padre se propagarán directamente a todas las clases hijas.
+   ¿Que sucedera si tenemos que añadir una clase interfaz grafica?
+   ¿hacer que extienda de nuevo de aplicacion? ¿ o de Base de datos ?
+   es inestable.
+````
+ 
+````java
+class BaseDeDatos {
+    public void conectar() {
+        System.out.println("Conectando a la base de datos...");
+    }
+}
+
+class Aplicacion {
+    private BaseDeDatos db = new BaseDeDatos();
+
+    public void iniciar() {
+        db.conectar();
+        System.out.println("Aplicación iniciada.");
+    }
+}
+class AplicacionSimple {
+    public void iniciar() {
+        System.out.println("Aplicación simple iniciada.");
+    }
+}
+✔️ Una aplicacion no necesita de ser una base de datos, pero puede necesitarla, es por eso que
+    hacemos que simplemente se componga o no de esta sin depender de herencia de esta manera tambien
+    nos aseguramos que agregar componentes a la clase Aplicacion no sea mediante una jerarquia de clases.
 ````
 
 ------
