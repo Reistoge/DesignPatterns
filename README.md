@@ -318,7 +318,7 @@ Patrones que proponen soluciones flexibles para la creación de objetos
 ## When to use a creational pattern ?
 _In situations related to object creation or instantiation mechanisms, aiming to abstract the process so that code is flexible, reusable, and decoupled from the specific classes it needs to instantiate._
 
-### Factory Method
+## Factory Method
 > _Establece la relacion de un Creador-Producto donde cada producto tiene su creador concreto, de esta manera podemos delegar gracias a un metodo abstracto la creacion concreta de cada producto concreto creando un producto sin la necesidad de especificar tu tipo concreto._
  
 ### Example
@@ -363,7 +363,8 @@ public class DrawingApp {
 ✖️ dificil de mantener al momento de agregar o modificar una figura implica
 tener que modificar la logica de la clase Draw la cual involucra otras figuras tambien (OCP).
 ````
-## Solución 
+### Solución 
+
 <div align="center"> 
 <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/CreationalPatterns/FactoryMethod/FactoryMethodUML.png?raw=true" alt="#  ">   
 </div>
@@ -374,7 +375,7 @@ tener que modificar la logica de la clase Draw la cual involucra otras figuras t
 ✔️ Definimos contratos concretos y estables para cada creador y figura, mantenible y seguro.
 ✔️ Estamos ocultando la creacion de cada Figura ya que el cliente interactua con un Creador no un producto concreto
  
-### Abstract Factory
+## Abstract Factory
    
    > _Provides an interface for creating families of related objects without specifying their concrete classes_.<br/>
    > _Ofrece una interfaz para crear familias de objetos relacionados y sin especificar sus clases concretas_.
@@ -411,7 +412,7 @@ public class VideoGameStore {
 ✖️ La clase no tiene una responsabilidad unica
 ✖️ La clase depende de clases concretas y no de abstracciones o interfaces.
 ````
-## Solucion 
+### Solucion 
 <div align="center"> 
 <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/CreationalPatterns/AbstractFactory/AbstractFactory.drawio.png?raw=true" width="800px" height="500px" alt="#  ">
 </div>
@@ -437,7 +438,7 @@ Patrones que proponen soluciones flexibles para la composición de clases y obje
 ## When to use a Structural pattern ?
 _En situaciones las cuales involucren la encapsulacion de composicion de objetos o tambien dinamismo y flexibilidad en la composicion de un objeto como que sea sencillo sustituir la composicion de un objeto por otro._ 
 
-### Proxy
+## Proxy
 > _Busca sustituir a un objeto (sujeto) y controlar su acceso mediante una clase que implemente la misma interfaz que el sujeto._
  
 ### Example
@@ -471,7 +472,7 @@ public class SimpleAssetLoader {
 ✖️ Existe un metodo de alto costo no controlado
     el cual además no necesita ser llamado todas las veces
 ````
-## Solución 
+### Solución 
 <div align="center"> 
 <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/StructuralPatterns/Proxy/ProxyUML.png?raw=true" width="500px" height="300px" alt="#  ">   
 </div>
@@ -482,7 +483,87 @@ public class SimpleAssetLoader {
 que modificar su codigo base de esta manera podemos ejecutar sus metodos
 bajo las condiciones de AssetLoaderProxy ya que estas dos implementan una misma interfaz.
        
+## Decorator
+> _Se usa principalmente cuando queremos agregar o añadir nuevas funcionalidades a uno o varios tipos de componentes de manera dinamica._
 
+### Example
+A small food truck sells Chilean Completos (hot dogs)
+and needs to calculate prices for different combinations.
+Initially, they handle it with a single class.
+
+````java
+public class ChileanCompleto {
+    private boolean hasMayo;
+    private boolean hasPalta;
+    private boolean hasKetchup;
+    private boolean isLightKetchup;
+    private String sausageType; // normal, premium, veggie
+
+    public ChileanCompleto() {
+        this.sausageType = "normal";
+    }
+
+    public float calculatePrice() {
+        float basePrice = 2.0f; // base completo price
+
+        // Add toppings prices
+        if (hasMayo) {
+            basePrice += 0.2f;
+        }
+        if (hasPalta) {
+            basePrice += 0.5f;
+        }
+        if (hasKetchup) {
+            basePrice += isLightKetchup ? 0.3f : 0.1f;
+        }
+
+        // Calculate sausage price
+        switch (sausageType.toLowerCase()) {
+            case "premium":
+                basePrice += 2.0f;
+                break;
+            case "veggie":
+                basePrice += 3.0f;
+                break;
+        }
+
+        return basePrice;
+    }
+
+    public void displayCompleto() {
+        System.out.println("Chilean Completo with:");
+        System.out.println("- Sausage type: " + sausageType);
+        if (hasMayo) System.out.println("- Mayo");
+        if (hasPalta) System.out.println("- Palta");
+        if (hasKetchup) System.out.println("- Ketchup" + (isLightKetchup ? " (light)" : ""));
+        System.out.println("Total price: " + calculatePrice());
+    }
+
+    // Setters
+    public void addMayo() { this.hasMayo = true; }
+    public void addPalta() { this.hasPalta = true; }
+    public void addKetchup(boolean light) {
+        this.hasKetchup = true;
+        this.isLightKetchup = light;
+    }
+    public void setSausageType(String type) { this.sausageType = type; }
+}
+````
+### Solución
+En este caso, queremos que un componente y sus ingredientes tengan
+un precio price() y un display() en el programa. Debemos establecer 
+esto porque, al decir esto, podemos crear una única interfaz tanto 
+para el componente (Componente) como para los ingredientes (Decorador). 
+Ahora comenzamos a implementar la estructura del decorador en nuestra solución.
+
+1. Crear la interfaz **IComponent** o **AbstractComponent**
+2. Crear una clase abstracta **Decorator**
+3. Crear todos los componentes concretos y que la clase Decorator implemente la interfaz IComponent
+4. Dentro de la clase Decorator, agregar un campo de tipo IComponent llamado "component"
+y delegar cada llamada de los métodos de implementación al componente
+(ej: dentro de method1() -> component.method1())
+5. Crear una clase ConcreteDecorator que extienda de Decorator
+y que sobrescriba cada llamada a un método llamando primero al mismo método de la superclase.
 -----
 ## Behavioral Patterns
 <div align="center"> 
@@ -493,7 +574,7 @@ Patrones que proponen soluciones flexibles para la interacción y división de r
 ## When to use a Behavioral pattern ?
 _En situaciones las cuales involucren distribuir o controlar el procesamiento y algoritmos entre objetos o tambien cuando se busque especificar flujos y procesamientos dinamicos de un sistema de objetos._ 
 
-### Visitor
+## Visitor
 > Permite la agregacion o construccion de nuevas operaciones y funcionalidades (visitores) que deben realizarse sobre los elementos de un conjunto de objetos (elementos) sin la necesidad de modificar su clase.
 
 ### Ejemplo
@@ -542,7 +623,30 @@ public class Artwork {
    todos los demas elementos innecesariamente
    
 ````
-## Solución 
+### Solución 
+1. Crear una interfaz para los elementos que se le aplicara una logica (IElement) y el visitante que aplica la logica a los elementos (IVisitor)
+2. Para la interfaz del visitante:
+    1. Nuestra interfaz debe ser **capaz** de que en un solo metodo pueda 
+       aceptar y aplicar una logica distinta sobre IElementos concretos es por eso que se debemos **añadir
+       el mismo metodo accept()** pero soportado para **diferentes parametros** que seria 
+       cada tipo concreto de elementos.
+       ````java
+       accept(C1 elemento1);
+       accept(C2 elemento2);
+       accept(C3 elemento3);
+       ````
+           
+3. Para la interfaz de Elemento:
+   1. añadir un metodo
+   ````java
+    visit(IVisitor v);
+   ````
+   3. dentro de cada elemento concreto es importante que dentro del cuerpo de la funcion este implementado de esta forma
+   ````java
+    v.visit(this)
+   ````
+      
+   
 <div align="center"> 
 <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/BehavioralPatterns/Visitor/VisitorUML.png?raw=true"  alt="#  ">   
 </div>
@@ -554,7 +658,7 @@ public class Artwork {
 ### Detalle
 😔 El patron visitor por otro lado tiene una gran desventaja y es cuando nosotros necesitemos agregar nuevos elementos a nuestra estructura ya que supondrá  modificar la interfaz visitor y a todas sus implementaciones (acoplamiento evolutivo).
 
-### Observer
+## Observer
 > Permite definir mecanismos suscripcion dinamicos para notificar eventos a multiples objetos los cuales observan o escuchan a un Sujeto    
 
 ### Ejemplo
@@ -618,17 +722,66 @@ de donde se notifica a todos los demas, no se respeta SRP.
 
    
 ````
-## Solución 
+### Solución 
 <div align="center"> 
 <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/BehavioralPatterns/Observer/ObserverUML.png?raw=true"  alt="#  ">   
 </div>
 
 [Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/BehavioralPatterns/Observer/Solution)</br>
 ### Ventajas de esta estructura 
-✔️ Podemos añadir observadores y sujetos sin la necesidad de modificar la logica base</br>
-✔️ Podemos añadir una logica especifica a cada observador en la manera que es actualizado y como notifica cada sujeto a sus observadores.</br>
-✔️ Gracias a esta estructura es mucho más simple y mantenible hacer combinaciones entre sujetos y observadores ya que se comunican mediante una interfaz.</br>
+✔️ Podemos añadir observadores y sujetos sin la necesidad de modificar o alterar la logica base (Acoplamiento)</br>
+✔️ Podemos añadir o modificar la logica especifica a cada observador en la manera que es actualizado y como notifica cada sujeto a sus observadores (encapsulamiento).</br>
+✔️ Gracias a esta estructura es mucho más simple y mantenible hacer combinaciones entre sujetos y observadores ya que se comunican mediante una interfaz.(integridad conceptual)</br>
 
+## Template Method
+> Permite definir el esqueleto o plantilla de un algoritmo el cual además se compone de procesos abstractos los cuales apliquen una logica distinta.  
+
+### Ejemplo
+A scientific calculation system needs to process different
+mathematical formulas. Each formula follows a similar three-step
+calculation pattern but with different mathematical operations.
+
+````java
+public class ScientificCalculation {
+    private float a;
+    private float b;
+    private float c;
+    private float d;
+    private float e;
+
+    public float processFormula1() {
+        // Three-step calculation duplicated
+        float step1 = a * b;
+        float step2 = c + a;
+        float step3 = Math.pow(a, b);
+        return (step1 * step2) + step3;
+    }
+
+    public float processFormula2() {
+        // Same three-step structure, different math
+        float step1 = (d + e) * (d + e);
+        float step2 = Math.exp(e);
+        float step3 = (2 * d) / e;
+        return (step1 * step2) + step3;
+    }
+}
+✖️ Cada vez que añadamos un proceso nuevo tendremos que volver a escribir el codigo plantilla (acoplamiento no aceptable)
+✖️ Si tenemos muchos procesos y decidimos cambiar el codigo plantilla romperiamos con
+la estructura de nuestro sistema, teniendo que ir a actualizar cada proceso concreto (acoplamiento evolutivo, OCP)
+
+
+   
+````
+### Solución 
+<div align="center"> 
+<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/BehavioralPatterns/TemplateMethod/TemplateMethodUML.png?raw=true"  alt="#  ">   
+</div>
+
+[Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/BehavioralPatterns/TemplateMethod/Solution)</br>
+### Ventajas de esta estructura 
+✔️  No tenemos que estar reescribiendo la formula cada vez que creamos un proceso nuevo
+✔️ Ahora es más escalable debido a que si queremos cambiar la formula base tenemos que simplemente cambiar la dentro del metodo ````templateMethod()````
+✔️ Cada proceso esta encapsulado y oculta su informacion tanto de atributos como de metodos de una manera la cual puedan modificarse sin tener que alterar la estructura general.
  
 
  
