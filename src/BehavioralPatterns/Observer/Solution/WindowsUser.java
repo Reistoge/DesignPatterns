@@ -1,4 +1,4 @@
-package BehavioralPatterns.Observer;
+package BehavioralPatterns.Observer.Solution;
 
 public class WindowsUser implements IObserver {
     private String name;

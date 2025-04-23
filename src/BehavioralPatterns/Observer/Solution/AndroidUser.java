@@ -1,4 +1,4 @@
-package BehavioralPatterns.Observer;
+package BehavioralPatterns.Observer.Solution;
 
 public class AndroidUser implements IObserver {
     private String name;

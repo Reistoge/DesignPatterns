@@ -1,4 +1,4 @@
-package BehavioralPatterns.Observer;
+package BehavioralPatterns.Observer.Solution;
 
 public class IphoneUser implements IObserver {
     private String name;

@@ -1,0 +1,52 @@
+A multimedia application needs to update and notify different types
+of users (Windows, Android, iPhone) about new app versions and messages.
+Initially, the updates are handled through direct method calls.
+
+public class MultimediaApp {
+    private ArrayList<String> windowsUsers = new ArrayList<>();
+    private ArrayList<String> androidUsers = new ArrayList<>();
+    private ArrayList<String> iphoneUsers = new ArrayList<>();
+    private String currentVersion;
+
+    public void addUser(String name, String platform) {
+        switch(platform.toLowerCase()) {
+            case "windows":
+                windowsUsers.add(name);
+                break;
+            case "android":
+                androidUsers.add(name);
+                break;
+            case "iphone":
+                iphoneUsers.add(name);
+                break;
+        }
+    }
+
+    public void updateAppVersion(String newVersion) {
+        currentVersion = newVersion;
+
+        // Direct update calls for each platform
+        for(String user : windowsUsers) {
+            System.out.println("Updating Windows user " + user + " to version " + newVersion);
+        }
+        for(String user : androidUsers) {
+            System.out.println("Updating Android user " + user + " to version " + newVersion);
+        }
+        for(String user : iphoneUsers) {
+            System.out.println("Updating iPhone user " + user + " to version " + newVersion);
+        }
+    }
+
+    public void sendMessage(String message) {
+        // Direct message sending for each platform
+        for(String user : windowsUsers) {
+            System.out.println("Sending to Windows user " + user + ": " + message);
+        }
+        for(String user : androidUsers) {
+            System.out.println("Sending to Android user " + user + ": " + message);
+        }
+        for(String user : iphoneUsers) {
+            System.out.println("Sending to iPhone user " + user + ": " + message);
+        }
+    }
+}

@@ -1,4 +1,4 @@
-package BehavioralPatterns.Observer;
+package BehavioralPatterns.Observer.Solution;
 
 public interface ISubject {
     public void addObserver(IObserver observer);
