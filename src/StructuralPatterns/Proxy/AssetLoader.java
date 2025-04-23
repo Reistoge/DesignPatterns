@@ -3,7 +3,7 @@ package StructuralPatterns.Proxy;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class AssetLoader implements AssetLoaderInterface {
+public class AssetLoader implements IAssetLoader {
 
     // this class just initialize and loads assets.
     ArrayList<String> assets;
@@ -22,7 +22,7 @@ public class AssetLoader implements AssetLoaderInterface {
         String processedValues = bigDemandProcessingFunction(name);
         return processedValues;
     }
-    public String bigDemandProcessingFunction(String name){
+    private String bigDemandProcessingFunction(String name){
         return name.toUpperCase()+".PROCESSED.VALUES.TRUE";
     }
     public void showAsset(String processedValues) {
@@ -34,7 +34,7 @@ public class AssetLoader implements AssetLoaderInterface {
         }
     }
 
-    public String getRandomString(int min, int max) {
+    private String getRandomString(int min, int max) {
         int leftLimit = 97; // letter 'a'
         int rightLimit = 122; // letter 'z'
         Random random = new Random();

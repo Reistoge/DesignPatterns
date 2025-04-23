@@ -1,8 +1,8 @@
-package StructuralPatterns.Decorator;
+package StructuralPatterns.Decorator.Solution;
 
-public class SpecialSausage extends Decorator {
+public class PremiumSausageDecorator extends Decorator {
     String quality; // premium veggie
-    public SpecialSausage(AbstractComponent component, String quality) {
+    public PremiumSausageDecorator(AbstractComponent component, String quality) {
         super(component);
         cost=1f;
         this.quality = quality;

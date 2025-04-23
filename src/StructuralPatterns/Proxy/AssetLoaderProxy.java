@@ -2,13 +2,13 @@ package StructuralPatterns.Proxy;
 
 import java.util.ArrayList;
 
-public class AssetLoaderProxy implements AssetLoaderInterface {
+public class AssetLoaderProxy implements IAssetLoader {
     // Proxy pattern provides the same interface for the "proxied" and the proxy
     final float MAX_CALC_CAPACITY=10000f;
     ArrayList<String> assetsOnCache;
     ArrayList<String> assetsData;
-    AssetLoaderInterface assetLoader;
-    public AssetLoaderProxy(AssetLoaderInterface assetLoader) {
+    IAssetLoader assetLoader;
+    public AssetLoaderProxy(IAssetLoader assetLoader) {
         assetsOnCache = new ArrayList<>();
         assetsData = new ArrayList<>();
         this.assetLoader = assetLoader;

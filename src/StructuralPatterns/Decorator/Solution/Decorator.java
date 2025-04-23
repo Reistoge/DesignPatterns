@@ -1,4 +1,4 @@
-package StructuralPatterns.Decorator;
+package StructuralPatterns.Decorator.Solution;
 
 public abstract class Decorator implements AbstractComponent {
     protected float cost;

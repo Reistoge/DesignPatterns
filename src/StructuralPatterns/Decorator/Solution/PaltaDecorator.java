@@ -1,4 +1,4 @@
-package StructuralPatterns.Decorator;
+package StructuralPatterns.Decorator.Solution;
 
 public class PaltaDecorator extends Decorator {
 

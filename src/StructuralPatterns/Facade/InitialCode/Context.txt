@@ -1,0 +1,10 @@
+Context:
+You`re building a media player system, to play a song you have to manually
+decoding, buffering this creates tight coupling between the high-level
+application logic and the low level subsystems.
+
+Solution.
+Instead of using N the concrete subsystems or interfaces in the same client code,
+you create a "Facade" class that provides a simplified interface to the subsystems.
+by this, you reduce the complexity in the client code so the client just calls the facade methods
+and the facade will take care of calling the subsystems.

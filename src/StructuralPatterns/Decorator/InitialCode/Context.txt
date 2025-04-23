@@ -1,0 +1,27 @@
+Context
+A small food truck sells Chilean Completos (hot dogs)
+and needs a simple system to calculate prices.
+Initially, they have a basic class where
+* Adding new toppings requires modifying the class
+* Can't handle variations like light ketchup
+* Hard to track ingredient combinations
+* Price calculations are tightly coupled
+* Code becomes messy with many conditionals
+
+
+Solution
+In this case, we want that a completo and its ingredients have a
+price() and a display() in the program, we have to settle this
+way because by saying this we can create a single interface for
+both the completo (Component) and the ingredients (Decorator)
+now we start to implement the decorator structure to our solution.
+
+1. Create the interface "IComponent" or "AbstractComponent"
+2. create an abstract class "Decorator"
+3. make all the concrete components and the Decorator class implements IComponent interface
+4. Inside the Decorator class, add a field type IComponent named "component"
+   and delegate each call of the implementation methods to the component
+   (ex: inside method1() -> component.method1())
+5. Create a concreteDecorator class that extends from Decorator
+   and now overrides each method calling by first calling the
+   superclass same method

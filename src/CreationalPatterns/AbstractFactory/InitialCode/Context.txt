@@ -1,0 +1,44 @@
+Initial Problem (Before Abstract Factory) A video game
+store needs a system to manage their inventory of gaming consoles and controllers.
+Initially, they had a simple, tightly coupled structure
+
+public class VideoGameStore {
+    public Console createConsole(String brand) {
+        if (brand.equals("Sony")) {
+            return new PlayStation5(
+                    "PS5",
+                    499.99,
+                    "AMD Zen 2",
+                    "White"
+            );
+        } else if (brand.equals("Microsoft")) {
+            return new XboxSeriesX(
+                    "Xbox Series X",
+                    499.99,
+                    "AMD RDNA 2",
+                    "Black"
+            );
+        } else if (brand.equals("Nintendo")) {
+            return new NintendoSwitch(
+                    "Switch",
+                    299.99,
+                    "NVIDIA Custom Tegra",
+                    "Black/Red"
+            );
+        }
+        throw new IllegalArgumentException("Unknown brand");
+    }
+
+    public Controller createController(String brand) {
+        if (brand.equals("Sony")) {
+            return new DualShock5(69.99, "White");
+        } else if (brand.equals("Microsoft")) {
+            return new XboxController(59.99, "Black");
+        } else if (brand.equals("Nintendo")) {
+            return new ProController(69.99, "Black");
+        }
+        throw new IllegalArgumentException("Unknown brand");
+    }
+}
+
+

@@ -1,0 +1,17 @@
+
+You’re building a Weather App that uses data from multiple weather services.
+Your app was initially built to work with WeatherServiceA,
+but now you need to integrate WeatherServiceB, which uses
+a totally different interface. Your goal is to make
+both work without changing the original client code
+that expects WeatherServiceA.
+
+
+Solution:
+Create a class that basically
+provides or implements the main functionality of IWeatherServiceA using
+an encapsulated reference of weatherServiceB class
+the benefits of this approach is that now you can work with WeatherServiceB as a WeatherServiceA
+because you are creating a class that translates the functionality of "WeatherServiceB" using a "WeatherServiceA" interface
+
+

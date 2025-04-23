@@ -1,12 +1,15 @@
 import BehavioralPatterns.Strategy.BubbleSort;
 import BehavioralPatterns.Strategy.HeapSort;
 import BehavioralPatterns.Strategy.IStrategy;
-import StructuralPatterns.Decorator.*;
+import StructuralPatterns.Adapter.InitialCode.OpenWeatherA;
+import StructuralPatterns.Adapter.InitialCode.WeatherServiceA;
+import StructuralPatterns.Adapter.Solution.WeatherServiceBAdapter;
+import StructuralPatterns.Decorator.Solution.*;
+import StructuralPatterns.Facade.Solution.FacadeMediaPlayer;
 import StructuralPatterns.Proxy.AssetLoader;
-import StructuralPatterns.Proxy.AssetLoaderInterface;
+import StructuralPatterns.Proxy.IAssetLoader;
 import StructuralPatterns.Proxy.AssetLoaderProxy;
 
-import java.awt.*;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -18,7 +21,21 @@ public class Main {
 
 
     }
+    public static void FacadeTest()
+    {
+        // use by the client, Simple and easy to use
+        FacadeMediaPlayer mediaPlayer = new FacadeMediaPlayer("song.mp3");
+        mediaPlayer.turnOnMediaPlayer();
 
+    }
+    public static void AdapterTest(){
+        WeatherServiceA a = new OpenWeatherA();
+        a.getTemperatureInCelsius("La serena");
+
+        // now we can use B service thanks to the new adapter Class.
+        WeatherServiceA b  = new WeatherServiceBAdapter();
+        b.getTemperatureInCelsius("Ovalle");
+    }
     public static void strategyTest() {
         Scanner scan = new Scanner(System.in);
         String input = "";
@@ -73,7 +90,7 @@ public class Main {
         AbstractComponent completoOrder = new ChileanCompletoComponent();
         completoOrder = new MayoDecorator(completoOrder);
         completoOrder = new PaltaDecorator(completoOrder);
-        completoOrder = new SpecialSausage(completoOrder, "premium");
+        completoOrder = new PremiumSausageDecorator(completoOrder, "premium");
         completoOrder = new KetchupDecorator(completoOrder, true);
         completoOrder = new MayoDecorator(completoOrder);
         completoOrder = new PaltaDecorator(completoOrder);
@@ -86,8 +103,8 @@ public class Main {
 
     public void proxyTest() {
         Scanner sc = new Scanner(System.in);
-        AssetLoaderInterface assetLoader = new AssetLoader(20);
-        AssetLoaderInterface proxy = new AssetLoaderProxy(assetLoader);
+        IAssetLoader assetLoader = new AssetLoader(20);
+        IAssetLoader proxy = new AssetLoaderProxy(assetLoader);
         proxy.showAssetsNames();
         String input = "";
         while (!input.equals("exit")) {
