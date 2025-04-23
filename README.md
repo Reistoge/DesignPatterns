@@ -309,28 +309,123 @@ class AplicacionSimple {
 ````
 
 ------
+## Creational Patterns
 <div align="center"> 
 <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/CreationalPatterns/CreationalPatterns.png?raw=true" width="600px" height="300px" alt="#  ">   
 </div>
+Patrones que proponen soluciones flexibles para la creación de objetos 
 
 ## When to use a creational pattern ?
 _In situations related to object creation or instantiation mechanisms, aiming to abstract the process so that code is flexible, reusable, and decoupled from the specific classes it needs to instantiate._
 
 ### 1. Abstract Factory
-  
-   > "Provides an interface for creating families of related objects without specifying their concrete classes".<br/>
-   > "Ofrece una interfaz para crear familias de objetos relacionados y sin especificar sus clases concretas".
+   
+   > _Provides an interface for creating families of related objects without specifying their concrete classes_.<br/>
+   > _Ofrece una interfaz para crear familias de objetos relacionados y sin especificar sus clases concretas_.
   <div align="center"  > <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/CreationalPatterns/AbstractFactory/dpcs_af-432075449.png?raw=true" width="400px" height="200px"  alt="#  ">  </div>
 
-
 ### Example:
+A video game store needs a system to manage their inventory of gaming consoles and controllers.
+Initially, they had a simple, tightly coupled structure
+````java
+public class VideoGameStore {
+    public Console createConsole(String brand) {
+        if (brand.equals("Sony")) {
+            return new PlayStation5();
+        } else if (brand.equals("Microsoft")) {
+            return new XboxSeriesX();
+        } else if (brand.equals("Nintendo")) {
+            return new NintendoSwitch();
+        }
+        throw new IllegalArgumentException("Unknown brand");
+    }
 
-[UML Diagram](https://github.com/Reistoge/DesignPatterns/blob/main/src/CreationalPatterns/AbstractFactory/AbstractFactory.drawio.png?raw=true") <br/>
+    public Controller createController(String brand) {
+        if (brand.equals("Sony")) {
+            return new DualShock5();
+        } else if (brand.equals("Microsoft")) {
+            return new XboxController();
+        } else if (brand.equals("Nintendo")) {
+            return new ProController();
+        }
+        throw new IllegalArgumentException("Unknown brand");
+    }
+}
+✖️ Agregar una consola o control implica modificar el codigo base
+✖️ La clase no tiene una responsabilidad unica
+✖️ La clase depende de clases concretas y no de abstracciones o interfaces.
+````
+## Solucion 
+<div align="center"> 
+<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/CreationalPatterns/AbstractFactory/AbstractFactory.drawio.png?raw=true" width="800px" height="500px" alt="#  ">   
+</div>
+Ventajas de esta estructura
+✔️ Cliente interactua solo con las interfaces o abstracciones estables.
+✔️ Facilita la agregacion y mantencion a la hora de implementar nuevos tipos de controles, consolas e incluso otro tipo de productos.
+
+
 [Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/CreationalPatterns/AbstractFactory)
 #### Concrete Factories : ````NintendoFactory````,````MicrosoftFactory````,````SonyFactory````
 #### Concrete Products A: ````NintendoSwitch````,````XboxSeriesX````,````Playstation5````
 #### Concrete Products B: ````ProController````,````XboxController````,````DualShock5````
-
-
-
 -------
+
+## Structural Patterns
+<div align="center"> 
+<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/StructuralPatterns/StructuralPatterns.png?raw=true" width="600px" height="300px" alt="#  ">   
+</div>
+Patrones que proponen soluciones flexibles para la composición de clases y objetos
+## When to use a Structural pattern ?
+_En situaciones las cuales involucren la encapsulacion de composicion de objetos o tambien dinamismo y flexibilidad en la composicion de un objeto como que sea sencillo sustituir la composicion de un objeto por otro._ 
+
+### Proxy
+> Busca sustituir a un objeto (sujeto) y controlar su acceso mediante una clase que implemente la misma interfaz que el sujeto.
+ 
+
+Example:
+You need to show a preview of an asset (maybe a thumbnail or a name),
+but only load the actual image when the user wants to use it because
+these assets are large and stored remotely (in cloud storage or on disk),
+and loading them all at once is too expensive in memory and time.
+
+````java
+public class SimpleAssetLoader {
+    private List<String> assets = new ArrayList<>();
+
+    public String loadAsset(String name) {
+        // Always performs expensive processing
+        String processedAsset = processAsset(name);
+        assets.add(processedAsset);
+        return processedAsset;
+    }
+
+    public void showAsset(String name) {
+        // Always loads and processes the asset
+        String asset = loadAsset(name);
+        System.out.println("Showing asset: " + asset);
+    }
+
+    private String processAsset(String name) {
+        // Simulates expensive processing
+        return name.toUpperCase() + ".PROCESSED";
+    }
+}
+````
+## Solucion 
+<div align="center"> 
+<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/StructuralPatterns/Proxy/ProxyUML.png?raw=true" width="800px" height="500px" alt="#  ">   
+</div>
+Ventajas de esta estructura
+✔️ Estamos controlando los contratos de concretos AssetLoader sin tener que modificar su codigo base de esta manera podemos ejecutar sus metodos bajo las condiciones de AssetLoaderProxy ya que estas dos implementan una misma interfaz.
+
+
+
+## Behavioral Patterns
+<div align="center"> 
+<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/StructuralPatterns/StructuralPatterns.png?raw=true" width="600px" height="300px" alt="#  ">   
+</div>
+Patrones que proponen soluciones flexibles para la interacción y división de responsabilidades entre clases y objetos
+
+## When to use a Behavioral pattern ?
+_En situaciones las cuales involucren distribuir o controlar el procesamiento y algoritmos entre objetos o tambien cuando se busque especificar flujos y procesamientos dinamicos de un sistema de objetos._ 
+
