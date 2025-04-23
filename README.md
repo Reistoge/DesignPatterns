@@ -426,6 +426,71 @@ public class VideoGameStore {
 #### Concrete Products A: ````NintendoSwitch````,````XboxSeriesX````,````Playstation5````
 #### Concrete Products B: ````ProController````,````XboxController````,````DualShock5````
 
+## Builder
+> _Nos permite simplificar el constructor de un objeto cuando es complejo permitiendonos abstraer sus distintas formas de construccion simplificando las diferentes implementaciones de construcción del objeto._
+ 
+### Example
+Imagine a drawing application that needs to create different colored shapes (Red triangles, Blue circles, Green rectangles). Initially, the shapes are created directly in the client code:
+
+````java
+public class Personaje {
+    private String nombre;
+    private String dialogo;
+    private String tipo;
+    private String descripcion;
+    private float nivel;
+    private float peso;
+    private float experiencia;
+    private float ataque;
+    private float defensa;
+    private float velocidad;
+
+    Personaje(String nombre, String dialogo, String tipo, String descripcion, float nivel, float peso, float experiencia, float ataque, float defensa, float velocidad) {
+        this.nombre = nombre;
+        this.dialogo = dialogo;
+        this.tipo = tipo;
+        this.descripcion = descripcion;
+        this.nivel = nivel;
+        this.peso = peso;
+        this.experiencia = experiencia;
+        this.ataque = ataque;
+        this.defensa = defensa;
+        this.velocidad = velocidad;
+    }
+
+    @Override
+    public String toString() {
+        return "nombre: "  + this.nombre + "\n"+
+                "dialogo: "  + this.dialogo+ "\n"+
+                "tipo: "  + this.tipo+ "\n"+
+                "descripcion: "  + this.descripcion+ "\n"+
+                "nivel: "  + this.nivel + "\n"+
+                "peso: "  + this.peso+ "\n"+
+                "experiencia: "  + this.experiencia+ "\n"+
+                "ataque: "  + this.ataque+ "\n"+
+                "defensa: "  + this.defensa + "\n"+
+                "velocidad: "  + this.velocidad;
+    }
+
+    // ..... setters y getters
+
+ 
+}
+✖️ El constructor es muy complejo y esta saturado de parametros
+✖️ Se necesita una manera de que construir este objeto sea más simple
+✖️ Si buscamos combinaciones de constructores con distintos parametros,
+ dejarlos vacios no es una solucion escalable y crear uno por uno tampoco.
+````
+### Solución 
+
+<div align="center"> 
+<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/CreationalPatterns/Builder/BuilderUML.png?raw=true" alt="#  ">   
+</div>
+
+[Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/CreationalPatterns/FactoryMethod/Solution)</br>
+### Ventajas de esta estructura 
+✔️ Se simplifico la construccion del objeto ya que ahora puede ser inicializado con la combinacion de parametros que el cliente desee
+✔️ Agregar un atributo a la construccion de un objeto es mucho más escalable y estable ya que no tenemos que preocuparnos de nuevas combinaciones.
 
 -------
 
