@@ -1,6 +1,6 @@
-import BehavioralPatterns.Strategy.BubbleSort;
-import BehavioralPatterns.Strategy.HeapSort;
-import BehavioralPatterns.Strategy.IStrategy;
+import BehavioralPatterns.Strategy.Solution.BubbleSort;
+import BehavioralPatterns.Strategy.Solution.HeapSort;
+import BehavioralPatterns.Strategy.Solution.IStrategy;
 import StructuralPatterns.Adapter.InitialCode.OpenWeatherA;
 import StructuralPatterns.Adapter.InitialCode.WeatherServiceA;
 import StructuralPatterns.Adapter.Solution.WeatherServiceBAdapter;

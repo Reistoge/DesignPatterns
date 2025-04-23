@@ -1,4 +1,4 @@
-package CreationalPatterns.Builder;
+package CreationalPatterns.Builder.Solution;
 
 
 public class Personaje {
@@ -40,6 +40,8 @@ public class Personaje {
                 "defensa: "  + this.defensa + "\n"+
                 "velocidad: "  + this.velocidad;
     }
+
+
 
     public static class Builder{
         String nombre="";
@@ -108,60 +110,47 @@ public class Personaje {
         public Personaje build(){
             return new Personaje(this.nombre,this.dialogo,this.tipo,this.descripcion,this.nivel,this.peso,this.experiencia,this.ataque,this.defensa,this.velocidad);
         }
+
+
+    }
+    public String getNombre() {
+        return nombre;
     }
 
+    public String getDialogo() {
+        return dialogo;
+    }
 
-    /*
+    public String getTipo() {
+        return tipo;
+    }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
 
+    public float getNivel() {
+        return nivel;
+    }
 
-        public Builder setNombre(String nombre) {
-            // retornamos el builder para poder volver a llamarlo
-            this.nombre = nombre;
-            return this;
-        }
-        public Builder setDialogo(String dialogo) {
+    public float getPeso() {
+        return peso;
+    }
 
-            this.dialogo = dialogo;
-            return this;
+    public float getExperiencia() {
+        return experiencia;
+    }
 
-        }
-        public Builder setTipo(String tipo) {
-            this.tipo = tipo;
-            return this;
+    public float getAtaque() {
+        return ataque;
+    }
 
-        }
-        public Builder setDescripcion(String descripcion){
-            this.descripcion = descripcion;
-            return this;
-        }
-        public Builder setNivel (float nivel){
-            this.nivel = nivel;
-            return this;
+    public float getDefensa() {
+        return defensa;
+    }
 
-        }
-        public Builder setPeso (float peso){
-            this.peso = peso;
-            return this;
-
-        }
-        public Builder setExperiencia (float experiencia){
-            this.experiencia = experiencia;
-            return this;
-        }
-        public Builder setAtaque (float ataque){
-            this.ataque = ataque;
-            return this;
-        }
-        public Builder setDefensa(float defensa){
-            this.defensa = defensa;
-            return this;
-
-        }
-        public Builder setVelocidad (float velocidad){
-            this.velocidad = velocidad;
-            return this;
-        }
-     */
+    public float getVelocidad() {
+        return velocidad;
+    }
 
 }

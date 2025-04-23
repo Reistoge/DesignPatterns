@@ -1,0 +1,42 @@
+A sorting application needs to handle
+different types of sorting for integers and strings.
+Initially, the sorting logic is hardcoded in a single class:
+
+public class SortingApp {
+    private String sortingType;
+
+    public ArrayList<Integer> sortIntegers(ArrayList<Integer> numbers, String sortType) {
+        this.sortingType = sortType;
+        ArrayList<Integer> result = new ArrayList<>(numbers);
+
+        // Complex conditional logic for different sorting types
+        if (sortType.equals("bubble")) {
+            for (int i = 0; i < result.size() - 1; i++) {
+                for (int j = i + 1; j < result.size(); j++) {
+                    if (result.get(i) > result.get(j)) {
+                        int temp = result.get(i);
+                        result.set(i, result.get(j));
+                        result.set(j, temp);
+                    }
+                }
+            }
+        } else if (sortType.equals("heap")) {
+            // Duplicate heap sort logic here
+            // ... heap sort implementation
+        }
+        return result;
+    }
+
+    public ArrayList<String> sortStrings(ArrayList<String> words, String sortType) {
+        this.sortingType = sortType;
+        ArrayList<String> result = new ArrayList<>(words);
+
+        // Same sorting logic duplicated for strings
+        if (sortType.equals("bubble")) {
+            // Duplicate bubble sort for strings
+        } else if (sortType.equals("heap")) {
+            // Duplicate heap sort for strings
+        }
+        return result;
+    }
+}

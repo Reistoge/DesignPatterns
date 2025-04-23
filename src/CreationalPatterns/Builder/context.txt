@@ -1,0 +1,55 @@
+A game character creation system with multiple attributes that
+needs to be initialized. Initially, it's handled through constructors and setters
+
+
+public class Personaje {
+    String nombre;
+    String dialogo;
+    String tipo;
+    String descripcion;
+    float nivel;
+    float peso;
+    float experiencia;
+    float ataque;
+    float defensa;
+    float velocidad;
+    //  PROBLEMA, EL CONSTRUCTOR ES MUY COMPLEJO O ESTA SATURADO DE PARAMETROS,
+    //  NECESITAMOS UNA FORMA DE QUE LA CONSTRUCCION DE ESTE OBJETO SEA MENOS COMPLEJO.
+    Personaje(String nombre, String dialogo, String tipo, String descripcion, float nivel, float peso, float experiencia, float ataque, float defensa, float velocidad) {
+        this.nombre = nombre;
+        this.dialogo = dialogo;
+        this.tipo = tipo;
+        this.descripcion = descripcion;
+        this.nivel = nivel;
+        this.peso = peso;
+        this.experiencia = experiencia;
+        this.ataque = ataque;
+        this.defensa = defensa;
+        this.velocidad = velocidad;
+    }
+
+    @Override
+    public String toString() {
+        return "nombre: "  + this.nombre + "\n"+
+                "dialogo: "  + this.dialogo+ "\n"+
+                "tipo: "  + this.tipo+ "\n"+
+                "descripcion: "  + this.descripcion+ "\n"+
+                "nivel: "  + this.nivel + "\n"+
+                "peso: "  + this.peso+ "\n"+
+                "experiencia: "  + this.experiencia+ "\n"+
+                "ataque: "  + this.ataque+ "\n"+
+                "defensa: "  + this.defensa + "\n"+
+                "velocidad: "  + this.velocidad;
+    }
+    public String getNombre() {
+            return nombre;
+    }
+
+    public String getDialogo() {
+            return dialogo;
+    }
+    .....
+
+
+
+}
