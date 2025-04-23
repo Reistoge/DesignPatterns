@@ -319,7 +319,7 @@ Patrones que proponen soluciones flexibles para la creación de objetos
 _In situations related to object creation or instantiation mechanisms, aiming to abstract the process so that code is flexible, reusable, and decoupled from the specific classes it needs to instantiate._
 
 ### Factory Method
-> _ Establece la relacion Creador-Producto donde cada producto tiene su creador concreto, de esta manera podemos delegar gracias a un metodo abstracto la creacion concreta de cada producto concreto._
+> _Establece la relacion de un Creador-Producto donde cada producto tiene su creador concreto, de esta manera podemos delegar gracias a un metodo abstracto la creacion concreta de cada producto concreto creando un producto sin la necesidad de especificar tu tipo concreto._
  
 ### Example
 Imagine a drawing application that needs to create different colored shapes (Red triangles, Blue circles, Green rectangles). Initially, the shapes are created directly in the client code:
@@ -553,6 +553,82 @@ public class Artwork {
 
 ### Detalle
 😔 El patron visitor por otro lado tiene una gran desventaja y es cuando nosotros necesitemos agregar nuevos elementos a nuestra estructura ya que supondrá  modificar la interfaz visitor y a todas sus implementaciones (acoplamiento evolutivo).
+
+### Observer
+> Permite definir mecanismos suscripcion dinamicos para notificar eventos a multiples objetos los cuales observan o escuchan a un Sujeto    
+
+### Ejemplo
+A multimedia application needs to update and notify different types
+of users (Windows, Android, iPhone) about new app versions and messages.
+Initially, the updates are handled through direct method calls.
+
+````java
+public class MultimediaApp {
+    private ArrayList<String> windowsUsers = new ArrayList<>();
+    private ArrayList<String> androidUsers = new ArrayList<>();
+    private ArrayList<String> iphoneUsers = new ArrayList<>();
+    private String currentVersion;
+
+    public void addUser(String name, String platform) {
+        switch(platform.toLowerCase()) {
+            case "windows":
+                windowsUsers.add(name);
+                break;
+            case "android":
+                androidUsers.add(name);
+                break;
+            case "iphone":
+                iphoneUsers.add(name);
+                break;
+        }
+    }
+
+    public void updateAppVersion(String newVersion) {
+        currentVersion = newVersion;
+
+        // Direct update calls for each platform
+        for(String user : windowsUsers) {
+            System.out.println("Updating Windows user " + user + " to version " + newVersion);
+        }
+        for(String user : androidUsers) {
+            System.out.println("Updating Android user " + user + " to version " + newVersion);
+        }
+        for(String user : iphoneUsers) {
+            System.out.println("Updating iPhone user " + user + " to version " + newVersion);
+        }
+    }
+
+    public void sendMessage(String message) {
+        // Direct message sending for each platform
+        for(String user : windowsUsers) {
+            System.out.println("Sending to Windows user " + user + ": " + message);
+        }
+        for(String user : androidUsers) {
+            System.out.println("Sending to Android user " + user + ": " + message);
+        }
+        for(String user : iphoneUsers) {
+            System.out.println("Sending to iPhone user " + user + ": " + message);
+        }
+    }
+}
+✖️ Modificar o añadir una logica especifica a un observador implica cambiar la logica dentro
+de donde se notifica a todos los demas, no se respeta SRP.
+✖️ No hay una definicion de contratos o una definicion concreta para cada tipo de observador
+
+
+   
+````
+## Solución 
+<div align="center"> 
+<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/BehavioralPatterns/Observer/ObserverUML.png?raw=true"  alt="#  ">   
+</div>
+
+[Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/BehavioralPatterns/Observer/Solution)</br>
+### Ventajas de esta estructura 
+✔️ Podemos añadir observadores y sujetos sin la necesidad de modificar la logica base</br>
+✔️ Podemos añadir una logica especifica a cada observador en la manera que es actualizado y como notifica cada sujeto a sus observadores.</br>
+✔️ Gracias a esta estructura es mucho más simple y mantenible hacer combinaciones entre sujetos y observadores ya que se comunican mediante una interfaz.</br>
+
  
 
  
