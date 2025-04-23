@@ -1,4 +1,4 @@
-package BehavioralPatterns.TemplateMethod;
+package BehavioralPatterns.TemplateMethod.Solution;
 
 public class ConcreteProcess2 extends AbstractProcess {
     float d;

@@ -1,4 +1,4 @@
-package BehavioralPatterns.TemplateMethod;
+package BehavioralPatterns.TemplateMethod.Solution;
 
 public abstract class AbstractProcess {
     float cost;

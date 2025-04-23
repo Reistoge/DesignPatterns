@@ -1,0 +1,28 @@
+A scientific calculation system needs to process different
+mathematical formulas. Each formula follows a similar three-step
+calculation pattern but with different mathematical operations.
+
+
+public class ScientificCalculation {
+    private float a;
+    private float b;
+    private float c;
+    private float d;
+    private float e;
+
+    public float processFormula1() {
+        // Three-step calculation duplicated
+        float step1 = a * b;
+        float step2 = c + a;
+        float step3 = Math.pow(a, b);
+        return (step1 * step2) + step3;
+    }
+
+    public float processFormula2() {
+        // Same three-step structure, different math
+        float step1 = (d + e) * (d + e);
+        float step2 = Math.exp(e);
+        float step3 = (2 * d) / e;
+        return (step1 * step2) + step3;
+    }
+}

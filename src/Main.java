@@ -21,7 +21,7 @@ public class Main {
 
 
     };
-    public static void FacadeTest()
+    public static void facadeTest()
     {
         // use by the client, Simple and easy to use
         FacadeMediaPlayer mediaPlayer = new FacadeMediaPlayer("song.mp3");
