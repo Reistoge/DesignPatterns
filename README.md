@@ -779,9 +779,65 @@ la estructura de nuestro sistema, teniendo que ir a actualizar cada proceso conc
 
 [Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/BehavioralPatterns/TemplateMethod/Solution)</br>
 ### Ventajas de esta estructura 
-✔️  No tenemos que estar reescribiendo la formula cada vez que creamos un proceso nuevo
-✔️ Ahora es más escalable debido a que si queremos cambiar la formula base tenemos que simplemente cambiar la dentro del metodo ````templateMethod()````
-✔️ Cada proceso esta encapsulado y oculta su informacion tanto de atributos como de metodos de una manera la cual puedan modificarse sin tener que alterar la estructura general.
- 
+✔️ No tenemos que estar reescribiendo la formula cada vez que creamos un proceso nuevo.</br>
+✔️ Ahora es más escalable debido a que si queremos cambiar la formula base tenemos que simplemente cambiar la dentro del metodo ````templateMethod()````.</br>
+✔️ Cada proceso esta encapsulado y oculta su informacion tanto de atributos como de metodos de una manera la cual puedan modificarse sin tener que alterar la estructura general.</br>
+
+## Strategy
+> Nos permite definir una estrucutra el cual seleccionar en tiempo de ejecucion que tipo de algoritmo se ejecutara para un proceso concreto.   
+
+### Ejemplo
+A sorting application needs to handle different types
+of sorting for integers and strings.
+
+````java
+public class SortingApp {
+    private String sortingType;
+
+    public ArrayList<Integer> sortIntegers(ArrayList<Integer> numbers, String sortType) {
+        this.sortingType = sortType;
+        ArrayList<Integer> result = new ArrayList<>(numbers);
+
+        // Complex conditional logic for different sorting types
+        if (sortType.equals("bubble")) {
+            // ... bubble sort implementation
+        } else if (sortType.equals("heap")) {
+            // Duplicate heap sort logic here
+            // ... heap sort implementation
+        }
+        return result;
+    }
+
+    public ArrayList<String> sortStrings(ArrayList<String> words, String sortType) {
+        this.sortingType = sortType;
+        ArrayList<String> result = new ArrayList<>(words);
+
+        // Same sorting logic duplicated for strings
+        if (sortType.equals("bubble")) {
+            // Duplicate bubble sort for strings
+        } else if (sortType.equals("heap")) {
+            // Duplicate heap sort for strings
+        }
+        return result;
+    }
+}
+✖️ La logica de cada algoritmo no esta encapsulada, debemos modificar
+la estructura general siempre que queramos modificar cualquiera de los algoritmos
+✖️ Cuando queramos asociar un tipo de algoritmo especifico a una
+entidad o objeto esta estructura se ira volviendo cada vez más inestable.
+
+
+   
+````
+### Solución 
+<div align="center"> 
+<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/BehavioralPatterns/TemplateMethod/TemplateMethodUML.png?raw=true"  alt="#  ">   
+</div>
+
+[Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/BehavioralPatterns/TemplateMethod/Solution)</br>
+### Ventajas de esta estructura 
+✔️  Cada logica concreta esta encapsulada ocultando la informacion de sus metodos y atributos especificos lo que modificarla no altera la estructura general.</br>
+✔️  Debido a que esta estructura maneja cada algoritmo concreto como una entidad, podemos asociar estos algoritmos a otros tipos de entidades de manera escalable.</br>
+
 
  
