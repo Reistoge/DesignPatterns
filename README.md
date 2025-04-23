@@ -322,7 +322,7 @@ _In situations related to object creation or instantiation mechanisms, aiming to
    
    > _Provides an interface for creating families of related objects without specifying their concrete classes_.<br/>
    > _Ofrece una interfaz para crear familias de objetos relacionados y sin especificar sus clases concretas_.
-  <div align="center"  > <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/CreationalPatterns/AbstractFactory/dpcs_af-432075449.png?raw=true" width="400px" height="200px"  alt="#  ">  </div>
+  <div align="center"  > <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/CreationalPatterns/AbstractFactory/dpcs_af-432075449.png?raw=true"   alt="#  ">  </div>
 
 ### Example:
 A video game store needs a system to manage their inventory of gaming consoles and controllers.
@@ -357,14 +357,14 @@ public class VideoGameStore {
 ````
 ## Solucion 
 <div align="center"> 
-<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/CreationalPatterns/AbstractFactory/AbstractFactory.drawio.png?raw=true" width="800px" height="500px" alt="#  ">   
+<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/CreationalPatterns/AbstractFactory/AbstractFactory.drawio.png?raw=true" width="800px" height="500px" alt="#  ">
 </div>
+
+[Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/CreationalPatterns/AbstractFactory)</br>
 Ventajas de esta estructura
-✔️ Cliente interactua solo con las interfaces o abstracciones estables.
-✔️ Facilita la agregacion y mantencion a la hora de implementar nuevos tipos de controles, consolas e incluso otro tipo de productos.
+</br>✔️ Cliente interactua solo con las interfaces o abstracciones estables.
+</br>✔️ Facilita la agregacion y mantencion a la hora de implementar nuevos tipos de controles, consolas e incluso otro tipo de productos.
 
-
-[Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/CreationalPatterns/AbstractFactory)
 #### Concrete Factories : ````NintendoFactory````,````MicrosoftFactory````,````SonyFactory````
 #### Concrete Products A: ````NintendoSwitch````,````XboxSeriesX````,````Playstation5````
 #### Concrete Products B: ````ProController````,````XboxController````,````DualShock5````
@@ -372,17 +372,17 @@ Ventajas de esta estructura
 
 ## Structural Patterns
 <div align="center"> 
-<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/StructuralPatterns/StructuralPatterns.png?raw=true" width="600px" height="300px" alt="#  ">   
+<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/StructuralPatterns/StructuralPatterns.png?raw=true" width="391px" height="292px" alt="#  ">   
 </div>
 Patrones que proponen soluciones flexibles para la composición de clases y objetos
+
 ## When to use a Structural pattern ?
 _En situaciones las cuales involucren la encapsulacion de composicion de objetos o tambien dinamismo y flexibilidad en la composicion de un objeto como que sea sencillo sustituir la composicion de un objeto por otro._ 
 
 ### Proxy
-> Busca sustituir a un objeto (sujeto) y controlar su acceso mediante una clase que implemente la misma interfaz que el sujeto.
+> _Busca sustituir a un objeto (sujeto) y controlar su acceso mediante una clase que implemente la misma interfaz que el sujeto._
  
-
-Example:
+### Example
 You need to show a preview of an asset (maybe a thumbnail or a name),
 but only load the actual image when the user wants to use it because
 these assets are large and stored remotely (in cloud storage or on disk),
@@ -410,22 +410,86 @@ public class SimpleAssetLoader {
         return name.toUpperCase() + ".PROCESSED";
     }
 }
+✖️ Existe un metodo de alto costo no controlado
+    el cual además no necesita ser llamado todas las veces
 ````
-## Solucion 
+## Solución 
 <div align="center"> 
-<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/StructuralPatterns/Proxy/ProxyUML.png?raw=true" width="800px" height="500px" alt="#  ">   
+<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/StructuralPatterns/Proxy/ProxyUML.png?raw=true" width="500px" height="300px" alt="#  ">   
 </div>
-Ventajas de esta estructura
-✔️ Estamos controlando los contratos de concretos AssetLoader sin tener que modificar su codigo base de esta manera podemos ejecutar sus metodos bajo las condiciones de AssetLoaderProxy ya que estas dos implementan una misma interfaz.
 
+[Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/StructuralPatterns/Proxy/Solution)</br>
+Ventajas de esta estructura 
+</br>✔️ Estamos controlando los contratos de concretos AssetLoader sin tener 
+         que modificar su codigo base de esta manera podemos ejecutar sus metodos
+         bajo las condiciones de AssetLoaderProxy ya que estas dos implementan una misma interfaz.
+       
 
-
+-----
 ## Behavioral Patterns
 <div align="center"> 
-<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/StructuralPatterns/StructuralPatterns.png?raw=true" width="600px" height="300px" alt="#  ">   
+<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/BehavioralPatterns/BehavioralPatterns.png?raw=true" alt="#  ">   
 </div>
 Patrones que proponen soluciones flexibles para la interacción y división de responsabilidades entre clases y objetos
 
 ## When to use a Behavioral pattern ?
 _En situaciones las cuales involucren distribuir o controlar el procesamiento y algoritmos entre objetos o tambien cuando se busque especificar flujos y procesamientos dinamicos de un sistema de objetos._ 
 
+### Visitor
+> Permite la agregacion o construccion de nuevas operaciones y funcionalidades (visitores) que deben realizarse sobre los elementos de un conjunto de objetos (elementos) sin la necesidad de modificar su clase.
+
+### Ejemplo
+A museum needs to manage different types of artworks 
+(Paint, Sculpture, Photograph) and perform various 
+operations on them like generating reports,
+calculating insurance values, and exporting data.
+````java
+public class Artwork {
+    private String name;
+    private double value;
+
+    public void generatePdfReport() {
+        if (this instanceof Paint) {
+            System.out.println("Generating PDF for painting");
+        } else if (this instanceof Sculpture) {
+            System.out.println("Generating PDF for sculpture");
+        } else if (this instanceof Photograph) {
+            System.out.println("Generating PDF for photograph");
+        }
+    }
+
+    public void calculateInsurance() {
+        if (this instanceof Paint) {
+            System.out.println("Calculating insurance for painting");
+        } else if (this instanceof Sculpture) {
+            System.out.println("Calculating insurance for sculpture");
+        } else if (this instanceof Photograph) {
+            System.out.println("Calculating insurance for photograph");
+        }
+    }
+
+    public void exportToCsv() {
+        if (this instanceof Paint) {
+            System.out.println("Exporting painting to CSV");
+        } else if (this instanceof Sculpture) {
+            System.out.println("Exporting sculpture to CSV");
+        } else if (this instanceof Photograph) {
+            System.out.println("Exporting photograph to CSV");
+        }
+    }
+}
+✖️ No se esta ocultando correctamente la informacion de cada elemento y
+   además siempre que tengamos que agregar una funcionalidad u operación
+   tendremos que modificar el codigo base de Artwork el cual involucra
+   todos los demas elementos innecesariamente
+   
+````
+## Solución 
+<div align="center"> 
+<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/BehavioralPatterns/Visitor/VisitorUML.png?raw=true"  alt="#  ">   
+</div>
+
+[Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/BehavioralPatterns/Visitor/Solution)</br>
+## Ventajas de esta estructura 
+✔️ Gracias a la estructura de este patron cada tipo de elemento se redirigira automaticamente al visitor ejecutando su metodo de tipo correspondiente, de esta manera cuando tengamos que añadir una funcionalidad para los elementos debemos simplemente crear una clase cual implemente la interfaz visitor e ir a añadiendo la nueva funcionalidad para cada elemento por separado.
+</br>😔 El patron visitor por otro lado tiene una gran desventaja y es cuando nosotros necesitemos agregar nuevos elementos a nuestra estructura ya que supondrá modificar la interfaz visitor y a todas sus implementaciones (acoplamiento evolutivo).
