@@ -1,0 +1,44 @@
+Let's consider a game settings manager context
+where we need to maintain consistent settings
+across the entire game
+
+Multiple classes creating their own settings instances,
+leading to inconsistent game configurations
+
+public class GameSettings {
+    private int volume;
+    private boolean fullscreen;
+    private int difficulty;
+
+    public GameSettings() {
+        // Default settings
+        volume = 50;
+        fullscreen = false;
+        difficulty = 1;
+    }
+
+    // Getters and setters
+    public void setVolume(int volume) { this.volume = volume; }
+    public int getVolume() { return volume; }
+    public void setFullscreen(boolean fullscreen) { this.fullscreen = fullscreen; }
+    public boolean isFullscreen() { return fullscreen; }
+    public void setDifficulty(int difficulty) { this.difficulty = difficulty; }
+    public int getDifficulty() { return difficulty; }
+}
+
+// Usage in different classes
+class AudioManager {
+    private GameSettings settings = new GameSettings();
+    public void playSound() {
+        // Uses its own settings instance
+        int volume = settings.getVolume();
+    }
+}
+
+class DisplayManager {
+    private GameSettings settings = new GameSettings();
+    public void updateDisplay() {
+        // Uses different settings instance
+        boolean fullscreen = settings.isFullscreen();
+    }
+}
