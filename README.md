@@ -361,9 +361,9 @@ public class VideoGameStore {
 </div>
 
 [Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/CreationalPatterns/AbstractFactory)</br>
-Ventajas de esta estructura
-</br>✔️ Cliente interactua solo con las interfaces o abstracciones estables.
-</br>✔️ Facilita la agregacion y mantencion a la hora de implementar nuevos tipos de controles, consolas e incluso otro tipo de productos.
+### Ventajas de esta estructura
+✔️ Cliente interactua solo con las interfaces o abstracciones estables.</br>
+✔️ Facilita la agregacion y mantencion a la hora de implementar nuevos tipos de controles, consolas e incluso otro tipo de productos.
 
 #### Concrete Factories : ````NintendoFactory````,````MicrosoftFactory````,````SonyFactory````
 #### Concrete Products A: ````NintendoSwitch````,````XboxSeriesX````,````Playstation5````
@@ -419,10 +419,10 @@ public class SimpleAssetLoader {
 </div>
 
 [Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/StructuralPatterns/Proxy/Solution)</br>
-Ventajas de esta estructura 
-</br>✔️ Estamos controlando los contratos de concretos AssetLoader sin tener 
-         que modificar su codigo base de esta manera podemos ejecutar sus metodos
-         bajo las condiciones de AssetLoaderProxy ya que estas dos implementan una misma interfaz.
+### Ventajas de esta estructura 
+✔️ Estamos controlando los contratos de concretos AssetLoader sin tener 
+que modificar su codigo base de esta manera podemos ejecutar sus metodos
+bajo las condiciones de AssetLoaderProxy ya que estas dos implementan una misma interfaz.
        
 
 -----
@@ -490,6 +490,11 @@ public class Artwork {
 </div>
 
 [Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/BehavioralPatterns/Visitor/Solution)</br>
-## Ventajas de esta estructura 
-✔️ Gracias a la estructura de este patron cada tipo de elemento se redirigira automaticamente al visitor ejecutando su metodo de tipo correspondiente, de esta manera cuando tengamos que añadir una funcionalidad para los elementos debemos simplemente crear una clase cual implemente la interfaz visitor e ir a añadiendo la nueva funcionalidad para cada elemento por separado.
-</br>😔 El patron visitor por otro lado tiene una gran desventaja y es cuando nosotros necesitemos agregar nuevos elementos a nuestra estructura ya que supondrá modificar la interfaz visitor y a todas sus implementaciones (acoplamiento evolutivo).
+### Ventajas de esta estructura 
+✔️ Gracias a la estructura de este patron cada tipo de elemento se redirigira automaticamente al visitor ejecutando su metodo de tipo correspondiente, de esta  manera cuando tengamos que añadir una funcionalidad para los elementos debemos simplemente crear una clase cual implemente la interfaz visitor e ir a añadiendo la nueva funcionalidad para cada elemento por separado.
+
+### Detalle
+😔 El patron visitor por otro lado tiene una gran desventaja y es cuando nosotros necesitemos agregar nuevos elementos a nuestra estructura ya que supondrá  modificar la interfaz visitor y a todas sus implementaciones (acoplamiento evolutivo).
+ 
+
+ 
