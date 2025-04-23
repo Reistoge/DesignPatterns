@@ -7,6 +7,24 @@ both work without changing the original client code
 that expects WeatherServiceA.
 
 
+public class OpenWeatherA implements WeatherServiceA{
+    @Override
+    public String getTemperatureInCelsius(String city) {
+        return "25ºc in " + city;
+    }
+}
+public interface WeatherServiceA {
+    String getTemperatureInCelsius(String city);
+}
+// New third-party library that you need to integrate (you can't modify this class)
+public class WeatherServiceB {
+    public double getTempFahrenheit(String location) {
+        // Simulates an external API that only returns Fahrenheit
+        return 77.0;
+    }
+}
+
+
 Solution:
 Create a class that basically
 provides or implements the main functionality of IWeatherServiceA using
