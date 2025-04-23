@@ -1,0 +1,37 @@
+
+Imagine a drawing application that needs to create different
+colored shapes (Red triangles, Blue circles, Green rectangles).
+Initially, the shapes are created directly in the client code:
+public class Shape {
+    private String name;
+    private String shape;
+    private String color;
+
+    public Shape(String name, String shape, String color) {
+        this.name = name;
+        this.shape = shape;
+        this.color = color;
+    }
+
+    public void draw() {
+        System.out.println("Drawing " + color + " " + shape + ": " + name);
+    }
+}
+
+public class DrawingApp {
+    public static void main(String[] args) {
+        // Client code creates shapes directly
+        Shape redTriangle = new Shape("Red1", "Triangle", "Red");
+        Shape blueCircle = new Shape("Blue1", "Circle", "Blue");
+        Shape greenRectangle = new Shape("Green1", "Rectangle", "Green");
+
+        // Complex creation logic scattered in client code
+        if(needsRedShape()) {
+            redTriangle.draw();
+        } else if(needsBlueShape()) {
+            blueCircle.draw();
+        } else {
+            greenRectangle.draw();
+        }
+    }
+}

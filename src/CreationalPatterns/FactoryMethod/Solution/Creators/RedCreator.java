@@ -1,7 +1,7 @@
-package CreationalPatterns.FactoryMethod.Creators;
+package CreationalPatterns.FactoryMethod.Solution.Creators;
 
-import CreationalPatterns.FactoryMethod.Products.Product;
-import CreationalPatterns.FactoryMethod.Products.RedProduct;
+import CreationalPatterns.FactoryMethod.Solution.Products.Product;
+import CreationalPatterns.FactoryMethod.Solution.Products.RedProduct;
 
 public class RedCreator extends Creator {
 

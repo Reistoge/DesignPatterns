@@ -1,7 +1,7 @@
-package CreationalPatterns.FactoryMethod.Creators;
+package CreationalPatterns.FactoryMethod.Solution.Creators;
 
-import CreationalPatterns.FactoryMethod.Products.BlueProduct;
-import CreationalPatterns.FactoryMethod.Products.Product;
+import CreationalPatterns.FactoryMethod.Solution.Products.BlueProduct;
+import CreationalPatterns.FactoryMethod.Solution.Products.Product;
 
 public class BlueCreator extends Creator {
     public BlueCreator() {

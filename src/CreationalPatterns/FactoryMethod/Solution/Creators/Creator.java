@@ -1,10 +1,10 @@
-package CreationalPatterns.FactoryMethod.Creators;
+package CreationalPatterns.FactoryMethod.Solution.Creators;
 
-import CreationalPatterns.FactoryMethod.Products.Product;
+import CreationalPatterns.FactoryMethod.Solution.Products.Product;
 
 // Factory method are subclasses of different types of objects
 // that connect between each other
-public abstract class Creator {
+public abstract class   Creator {
 
     // there is only a concrete Creator and a concrete Product
     // so we make both classes abstracts

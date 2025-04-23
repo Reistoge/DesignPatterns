@@ -1,7 +1,7 @@
-package CreationalPatterns.FactoryMethod.Creators;
+package CreationalPatterns.FactoryMethod.Solution.Creators;
 
-import CreationalPatterns.FactoryMethod.Products.GreenProduct;
-import CreationalPatterns.FactoryMethod.Products.Product;
+import CreationalPatterns.FactoryMethod.Solution.Products.GreenProduct;
+import CreationalPatterns.FactoryMethod.Solution.Products.Product;
 
 public class GreenCreator extends Creator {
     public GreenCreator() {

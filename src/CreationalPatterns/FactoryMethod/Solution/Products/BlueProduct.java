@@ -1,4 +1,4 @@
-package CreationalPatterns.FactoryMethod.Products;
+package CreationalPatterns.FactoryMethod.Solution.Products;
 
 public class BlueProduct extends Product {
     public BlueProduct(String name) {

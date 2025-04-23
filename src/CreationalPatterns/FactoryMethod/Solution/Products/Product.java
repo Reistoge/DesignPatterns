@@ -1,4 +1,4 @@
-package CreationalPatterns.FactoryMethod.Products;
+package CreationalPatterns.FactoryMethod.Solution.Products;
 
 public abstract class Product {
     String name;
