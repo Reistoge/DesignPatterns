@@ -1,7 +1,7 @@
-package BehavioralPatterns.Visitor.Elements;
+package BehavioralPatterns.Visitor.Solution.Elements;
 
-import BehavioralPatterns.Visitor.IElement;
-import BehavioralPatterns.Visitor.IVisitor;
+import BehavioralPatterns.Visitor.Solution.IElement;
+import BehavioralPatterns.Visitor.Solution.IVisitor;
 
 public class Sculpture implements IElement {
     @Override

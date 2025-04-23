@@ -1,9 +1,9 @@
-package BehavioralPatterns.Visitor.Visitors;
+package BehavioralPatterns.Visitor.Solution.Visitors;
 
-import BehavioralPatterns.Visitor.IVisitor;
-import BehavioralPatterns.Visitor.Elements.Paint;
-import BehavioralPatterns.Visitor.Elements.Photograph;
-import BehavioralPatterns.Visitor.Elements.Sculpture;
+import BehavioralPatterns.Visitor.Solution.IVisitor;
+import BehavioralPatterns.Visitor.Solution.Elements.Paint;
+import BehavioralPatterns.Visitor.Solution.Elements.Photograph;
+import BehavioralPatterns.Visitor.Solution.Elements.Sculpture;
 
 public class CsvExportVisitor implements IVisitor {
     @Override

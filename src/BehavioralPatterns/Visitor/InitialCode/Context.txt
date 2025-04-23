@@ -1,0 +1,39 @@
+A museum needs to manage different types of artworks
+(Paint, Sculpture, Photograph) and perform various
+operations on them like generating reports,
+calculating insurance values, and exporting data.
+
+public class Artwork {
+    private String name;
+    private double value;
+
+    public void generatePdfReport() {
+        if (this instanceof Paint) {
+            System.out.println("Generating PDF for painting");
+        } else if (this instanceof Sculpture) {
+            System.out.println("Generating PDF for sculpture");
+        } else if (this instanceof Photograph) {
+            System.out.println("Generating PDF for photograph");
+        }
+    }
+
+    public void calculateInsurance() {
+        if (this instanceof Paint) {
+            System.out.println("Calculating insurance for painting");
+        } else if (this instanceof Sculpture) {
+            System.out.println("Calculating insurance for sculpture");
+        } else if (this instanceof Photograph) {
+            System.out.println("Calculating insurance for photograph");
+        }
+    }
+
+    public void exportToCsv() {
+        if (this instanceof Paint) {
+            System.out.println("Exporting painting to CSV");
+        } else if (this instanceof Sculpture) {
+            System.out.println("Exporting sculpture to CSV");
+        } else if (this instanceof Photograph) {
+            System.out.println("Exporting photograph to CSV");
+        }
+    }
+}
