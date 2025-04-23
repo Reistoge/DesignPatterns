@@ -318,6 +318,70 @@ Patrones que proponen soluciones flexibles para la creación de objetos
 ## When to use a creational pattern ?
 _In situations related to object creation or instantiation mechanisms, aiming to abstract the process so that code is flexible, reusable, and decoupled from the specific classes it needs to instantiate._
 
+## Singleton
+> _Este patron nos asegura de que exista una instancia unica de una clase y además que sea accesible desde cualquier parte de nuestro sistema._
+
+### Example
+Let's consider a game settings manager context
+where we need to maintain consistent settings
+across the entire game
+
+
+````java
+public class GameSettings {
+    private int volume;
+    private boolean fullscreen;
+    private int difficulty;
+
+    public GameSettings() {
+        // Default settings
+        volume = 50;
+        fullscreen = false;
+        difficulty = 1;
+    }
+
+    // Getters and setters
+    public void setVolume(int volume) { this.volume = volume; }
+    public int getVolume() { return volume; }
+    public void setFullscreen(boolean fullscreen) { this.fullscreen = fullscreen; }
+    public boolean isFullscreen() { return fullscreen; }
+    public void setDifficulty(int difficulty) { this.difficulty = difficulty; }
+    public int getDifficulty() { return difficulty; }
+}
+
+// Usage in different classes
+class AudioManager {
+    private GameSettings settings = new GameSettings();
+    public void playSound() {
+        // Uses its own settings instance
+        int volume = settings.getVolume();
+    }
+}
+
+class DisplayManager {
+    private GameSettings settings = new GameSettings();
+    public void updateDisplay() {
+        // Uses different settings instance
+        boolean fullscreen = settings.isFullscreen();
+    }
+}
+✖️ Multiples clases crean sus propias instancias de gameSettings esto puede llevar a incosistencias de datos.
+✖️ No es necesario tener que volver a inicializar los datos cada vez que se necesiten por alguna otra clase.
+
+ 
+````
+### Solución 
+
+<div align="center"> 
+<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/CreationalPatterns/Singleton/SingletonUML.png?raw=true" alt="#  ">   
+</div>
+
+[Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/CreationalPatterns/Singleton/Solution)</br>
+### Ventajas de esta estructura 
+✔️ Los datos se inicializan una sola vez o cuando sea necesario.</br>
+✔️ Hay una mejor consistencia de datos ya que existe una unica fuente de donde consultarlos y acceder a ellos.
+ 
+
 ## Factory Method
 > _Establece la relacion de un Creador-Producto donde cada producto tiene su creador concreto, de esta manera podemos delegar gracias a un metodo abstracto la creacion concreta de cada producto concreto creando un producto sin la necesidad de especificar tu tipo concreto._
  
@@ -489,7 +553,7 @@ public class Personaje {
 
 [Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/CreationalPatterns/FactoryMethod/Solution)</br>
 ### Ventajas de esta estructura 
-✔️ Se simplifico la construccion del objeto ya que ahora puede ser inicializado con la combinacion de parametros que el cliente desee
+✔️ Se simplifico la construccion del objeto ya que ahora puede ser inicializado con la combinacion de parametros que el cliente desee.</br>
 ✔️ Agregar un atributo a la construccion de un objeto es mucho más escalable y estable ya que no tenemos que preocuparnos de nuevas combinaciones.
 
 -------
@@ -615,6 +679,11 @@ public class ChileanCompleto {
 }
 ````
 ### Solución
+<div align="center"> 
+<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/StructuralPatterns/Decorator/DecoratorUML.png?raw=true"  alt="#  ">   
+</div>
+
+[Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/StructuralPatterns/Proxy/Solution)</br>
 En este caso, queremos que un componente y sus ingredientes tengan
 un precio price() y un display() en el programa. Debemos establecer 
 esto porque, al decir esto, podemos crear una única interfaz tanto 
@@ -629,6 +698,104 @@ y delegar cada llamada de los métodos de implementación al componente
 (ej: dentro de method1() -> component.method1())
 5. Crear una clase ConcreteDecorator que extienda de Decorator
 y que sobrescriba cada llamada a un método llamando primero al mismo método de la superclase.
+
+## Adapter
+> _Nos provee de una interfaz intermediaria para que una clase la cual sea incompatible pueda integrarse a nuestra estructura sin modificar el codigo original_.  
+ 
+### Example
+Your app was initially built to work with WeatherServiceA,
+but now you need to integrate WeatherServiceB, which uses
+a totally different interface. Your goal is to make
+both work without changing the original client code
+that expects WeatherServiceA.
+````java
+public class OpenWeatherA implements WeatherServiceA{
+    @Override
+    public String getTemperatureInCelsius(String city) {
+        return "25ºc in " + city;
+    }
+}
+public interface WeatherServiceA {
+    String getTemperatureInCelsius(String city);
+}
+// New third-party library that you need to integrate (you can't modify this class)
+public class WeatherServiceB {
+    public double getTempFahrenheit(String location) {
+        // Simulates an external API that only returns Fahrenheit
+        return 77.0;
+    }
+}
+
+````
+### Solución 
+
+<div align="center"> 
+<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/StructuralPatterns/Adapter/AdapterUML.png?raw=true" alt="#  ">   
+</div>
+
+[Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/StructuralPatterns/Adapter/Solution)</br>
+### Ventajas de esta estructura 
+✔️ Mediante Inversion de dependencias y segregacion de interfaces 
+logramos compatibilizar funcionalidades a nuestro sistema creando
+una interfaz sin alterar el codigo original.</br>
+
+-----
+## Facade
+> _Nos provee de una clase o interfaz la cual busca simplificar el uso de multiples subsistemas de manera especifica o compleja en una sola interfaz la cual sea más simple trabajar con este conjunto_.  
+ 
+### Example
+You`re building a media player system, to play a song you have to manually
+decoding, buffering this creates tight coupling between the high-level
+application logic and the low level subsystems.
+
+ 
+````java
+public class AudioBuffer {
+    public void loadBuffer(String filePath) {
+        System.out.println("Buffering audio file: " + filePath);
+    }
+}
+public class AudioDecoder {
+    public void decode(String filePath) {
+        System.out.println("Decoding audio file: " + filePath);
+    }
+}
+public class AudioDriver {
+    public void playSound() {
+        System.out.println("Playing sound through audio driver");
+    }
+}
+public class MediaPlayer {
+
+    public void turnOnMediaPlayer() {
+        String song = "song.mp3";
+
+        AudioDecoder decoder = new AudioDecoder();
+        decoder.decode(song);
+
+        AudioBuffer buffer = new AudioBuffer();
+        buffer.loadBuffer(song);
+
+        AudioDriver driver = new AudioDriver();
+        driver.playSound();
+    }
+}
+✖️ Para un metodo estamos invocando directamente muchos subsistemas como si de una plantilla o inicializacion se tratase, a medida de que nuestro codigo vaya creciendo esto cada vez será más complejo entender.
+✖️ No es necesario tener que inicializar de nuevo los componentes cada vez que se llame este metodo ya que no es parte de la construcción de este.
+✖️ Si la inicializacion de un subsistema es muy complejo el codigo será muy dificil de entender y nuestra clase tendra más razones para ser modificada. 
+````
+### Solución 
+En lugar de usar N subsistemas o interfaces concretos en el mismo código de cliente, se crea una clase "Fachada" que proporciona una interfaz simplificada a los subsistemas. De esta manera, se reduce la complejidad del código de cliente, de modo que el cliente solo llama a los métodos de la fachada, y esta se encarga de llamar a los subsistemas.
+
+<div align="center"> 
+<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/StructuralPatterns/Facade/FacadeUML.png?raw=true" alt="#  ">   
+</div>
+
+[Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/StructuralPatterns/Facade/Solution)</br>
+### Ventajas de esta estructura 
+✔️ Mediante composicion y agregacion los componentes se inicializan solo cuando sea realmente necesario.</br>
+✔️ Reducimos la complejidad del metodo turnOnMediaPlayer() encapsulando y ocultando la inicializacion especifica de cada componente.</br>
+
 -----
 ## Behavioral Patterns
 <div align="center"> 
