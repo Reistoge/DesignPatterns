@@ -318,7 +318,63 @@ Patrones que proponen soluciones flexibles para la creación de objetos
 ## When to use a creational pattern ?
 _In situations related to object creation or instantiation mechanisms, aiming to abstract the process so that code is flexible, reusable, and decoupled from the specific classes it needs to instantiate._
 
-### 1. Abstract Factory
+### Factory Method
+> _ Establece la relacion Creador-Producto donde cada producto tiene su creador concreto, de esta manera podemos delegar gracias a un metodo abstracto la creacion concreta de cada producto concreto._
+ 
+### Example
+Imagine a drawing application that needs to create different colored shapes (Red triangles, Blue circles, Green rectangles). Initially, the shapes are created directly in the client code:
+
+````java
+public class Shape {
+    private String name;
+    private String shape;
+    private String color;
+
+    public Shape(String name, String shape, String color) {
+        this.name = name;
+        this.shape = shape;
+        this.color = color;
+    }
+
+    public void draw() {
+        System.out.println("Drawing " + color + " " + shape + ": " + name);
+    }
+}
+
+public class DrawingApp {
+    public static void main(String[] args) {
+        // Client code creates shapes directly
+        Shape redTriangle = new Shape("Red1", "Triangle", "Red");
+        Shape blueCircle = new Shape("Blue1", "Circle", "Blue");
+        Shape greenRectangle = new Shape("Green1", "Rectangle", "Green");
+        
+        // Complex creation logic scattered in client code
+        if(needsRedShape()) {
+            redTriangle.draw();
+        } else if(needsBlueShape()) {
+            blueCircle.draw();
+        } else {
+            greenRectangle.draw();
+        }
+    }
+}
+✖️ Drawing app se preoucupa de crear y mostrar las figuras, debe solamente mostrar. (SRP)
+✖️ El usuario debe interectuar con una clase concreta en lugar de una interfaz 
+✖️ dificil de mantener al momento de agregar o modificar una figura implica
+tener que modificar la logica de la clase Draw la cual involucra otras figuras tambien (OCP).
+````
+## Solución 
+<div align="center"> 
+<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/CreationalPatterns/FactoryMethod/FactoryMethodUML.png?raw=true" alt="#  ">   
+</div>
+
+[Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/CreationalPatterns/FactoryMethod/Solution)</br>
+### Ventajas de esta estructura 
+✔️ Agregar o modificar una figura no involucra codigo externo el cual no tiene relacion con la clase en si.
+✔️ Definimos contratos concretos y estables para cada creador y figura, mantenible y seguro.
+✔️ Estamos ocultando la creacion de cada Figura ya que el cliente interactua con un Creador no un producto concreto
+ 
+### Abstract Factory
    
    > _Provides an interface for creating families of related objects without specifying their concrete classes_.<br/>
    > _Ofrece una interfaz para crear familias de objetos relacionados y sin especificar sus clases concretas_.
@@ -368,6 +424,8 @@ public class VideoGameStore {
 #### Concrete Factories : ````NintendoFactory````,````MicrosoftFactory````,````SonyFactory````
 #### Concrete Products A: ````NintendoSwitch````,````XboxSeriesX````,````Playstation5````
 #### Concrete Products B: ````ProController````,````XboxController````,````DualShock5````
+
+
 -------
 
 ## Structural Patterns
