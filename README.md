@@ -1,14 +1,31 @@
 
-# Design Patterns 🦔
+# Patrones y principios de Software 🦔
 
 ## Summary
 This repository was created for learning and educational purposes. Also Intended to collect the 23 GOF design patterns
 
 ## Index
- * Design Principles
- * [Creational Patterns](https://github.com/Reistoge/DesignPatterns/tree/main/src/CreationalPatterns) 
- * Structural Patterns
- * Behavioral Patterns
+ * [Design Principles](#design-principles)
+    * [Conceptual Integrity](#integridad-conceptual)
+    * [Information Hiding](#ocultamiento-de-informacion)
+    * [Cohesion](#cohesion)
+    * [Coupling](#acoplamiento)
+ * [Creational Patterns](#creational-patterns)
+    * [Singleton](#singleton)
+    * [Factory Method](#factory-method)
+    * [Abstract Factory](#abstract-factory)
+    * [Builder](#builder)
+ 
+ * [Structural Patterns](#structural-patterns) 
+    * [Proxy](#proxy)
+    * [Decorator](#decorator)
+    * [Adapter](#adapter)
+    * [Facade](#facade)
+ * [Behavioral Patterns](#behavioral-patterns)
+    * [Observer](#observer)
+    * [Strategy](#strategy)
+    * [Template Method](#template-method)
+    * [Visitor](#visitor)
 ------
 ## Design principles
 Los principios de diseño representan directrices o recomendaciones genericas para garantizar que un diseño cumple con determinadas  ````propiedades````  las cuales nos permiten entender y desarollar sistemas de mayor calidad.
@@ -21,9 +38,9 @@ La integridad conceptual define estandares, convenciones y brinda consistencia a
 </br>
 
 Para seguir este principio se debe considerar
-  *  definir una convencion de codigo (ej; camelCase, snake_case)
-  *  definir el Diseño estandar para los componentes (ej: estructuras de datos que se usarán)
-  *  definir principios de diseño a seguir a lo largo del desarrollo.</br>
+  *  Definir una convencion de codigo (ej; camelCase, snake_case)
+  *  Definir el Diseño estandar para los componentes (ej: estructuras de datos que se usarán)
+  *  Definir principios de diseño a seguir a lo largo del desarrollo.</br>
 
 Casos en los cuales un sistema no se sigue este principio.
  * Se usan distintas versiones de un Framework
