@@ -6,7 +6,7 @@ This repository was created for learning and educational purposes. Also Intended
 
 ## Index
  * [Design Principles](#design-principles)
- * [Properties](#propiedades)
+ * [Design Properties](#propiedades)
     * [Conceptual Integrity](#integridad-conceptual)
     * [Information Hiding](#ocultamiento-de-informacion)
     * [Cohesion](#cohesion)
