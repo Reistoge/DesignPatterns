@@ -1,4 +1,4 @@
-package StructuralPatterns.Proxy;
+package StructuralPatterns.Proxy.Solution;
 
 import java.util.ArrayList;
 

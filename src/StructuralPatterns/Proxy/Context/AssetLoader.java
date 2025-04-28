@@ -1,4 +1,6 @@
-package StructuralPatterns.Proxy;
+package StructuralPatterns.Proxy.Context;
+
+import StructuralPatterns.Proxy.Solution.IAssetLoader;
 
 import java.util.ArrayList;
 import java.util.Random;

@@ -1,4 +1,4 @@
-package StructuralPatterns.Facade.InitialCode;
+package StructuralPatterns.Facade.Context;
 
 public class AudioDecoder {
     public void decode(String filePath) {

@@ -14,7 +14,6 @@ public class KetchupDecorator extends Decorator {
     public float getCost() {
         return getKetchupCost() + super.getCost();
     }
-
     public float getKetchupCost(){
         return this.cost;
     }

@@ -1,4 +1,4 @@
-package StructuralPatterns.Proxy;
+package StructuralPatterns.Proxy.Solution;
 
 public interface IAssetLoader {
     String loadAsset(String name);

@@ -1,6 +1,6 @@
 package StructuralPatterns.Adapter.Solution;
-import StructuralPatterns.Adapter.InitialCode.WeatherServiceA;
-import StructuralPatterns.Adapter.InitialCode.WeatherServiceB;
+import StructuralPatterns.Adapter.Context.WeatherServiceA;
+import StructuralPatterns.Adapter.Context.WeatherServiceB;
 
 public class WeatherServiceBAdapter implements WeatherServiceA {
     // The adapter has to implement the interface of the

@@ -1,4 +1,4 @@
-package StructuralPatterns.Decorator.InitialCode;
+package StructuralPatterns.Decorator.Context;
 
 public class Completo {
     private boolean hasMayo;

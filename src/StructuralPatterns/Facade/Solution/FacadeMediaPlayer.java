@@ -1,8 +1,8 @@
 package StructuralPatterns.Facade.Solution;
 
-import StructuralPatterns.Facade.InitialCode.AudioBuffer;
-import StructuralPatterns.Facade.InitialCode.AudioDecoder;
-import StructuralPatterns.Facade.InitialCode.AudioDriver;
+import StructuralPatterns.Facade.Context.AudioBuffer;
+import StructuralPatterns.Facade.Context.AudioDecoder;
+import StructuralPatterns.Facade.Context.AudioDriver;
 
 public class FacadeMediaPlayer {
     String song;

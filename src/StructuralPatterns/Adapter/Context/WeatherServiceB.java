@@ -1,4 +1,4 @@
-package StructuralPatterns.Adapter.InitialCode;
+package StructuralPatterns.Adapter.Context;
 // New third-party library that you need to integrate (you can't modify this class)
 public class WeatherServiceB {
     public double getTempFahrenheit(String location) {

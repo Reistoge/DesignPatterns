@@ -1,14 +1,14 @@
 import BehavioralPatterns.Strategy.Solution.BubbleSort;
 import BehavioralPatterns.Strategy.Solution.HeapSort;
 import BehavioralPatterns.Strategy.Solution.IStrategy;
-import StructuralPatterns.Adapter.InitialCode.OpenWeatherA;
-import StructuralPatterns.Adapter.InitialCode.WeatherServiceA;
+import StructuralPatterns.Adapter.Context.OpenWeatherA;
+import StructuralPatterns.Adapter.Context.WeatherServiceA;
 import StructuralPatterns.Adapter.Solution.WeatherServiceBAdapter;
 import StructuralPatterns.Decorator.Solution.*;
 import StructuralPatterns.Facade.Solution.FacadeMediaPlayer;
-import StructuralPatterns.Proxy.AssetLoader;
-import StructuralPatterns.Proxy.IAssetLoader;
-import StructuralPatterns.Proxy.AssetLoaderProxy;
+import StructuralPatterns.Proxy.Context.AssetLoader;
+import StructuralPatterns.Proxy.Solution.IAssetLoader;
+import StructuralPatterns.Proxy.Solution.AssetLoaderProxy;
 
 import java.util.*;
 import java.util.stream.Collectors;
