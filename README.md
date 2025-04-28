@@ -27,7 +27,8 @@ This repository was created for learning and educational purposes. Also Intended
     * [Template Method](#template-method)
     * [Visitor](#visitor)
 ------
-## Design principles [🦔](#patrones-y-principios-de-software-🦔)
+## Design principles
+[🦔](#patrones-y-principios-de-software-🦔)
 
 Los principios de diseño representan directrices o recomendaciones genericas para garantizar que un diseño cumple con determinadas  ````propiedades````  las cuales nos permiten entender y desarollar sistemas de mayor calidad.
 
