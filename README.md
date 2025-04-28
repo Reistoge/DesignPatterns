@@ -36,7 +36,7 @@ This repository was created for learning and educational purposes. Also Intended
     * [Template Method](#template-method)
     * [Visitor](#visitor)
 ------
-[🦔](#index)
+
 ## Design principles
 
 
