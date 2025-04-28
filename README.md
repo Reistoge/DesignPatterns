@@ -683,7 +683,7 @@ public class ChileanCompleto {
 <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/StructuralPatterns/Decorator/DecoratorUML.png?raw=true"  alt="#  ">   
 </div>
 
-[Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/StructuralPatterns/Proxy/Solution)</br>
+[Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/StructuralPatterns/Decorator/Solution)</br>
 En este caso, queremos que un componente y sus ingredientes tengan
 un precio price() y un display() en el programa. Debemos establecer 
 esto porque, al decir esto, podemos crear una única interfaz tanto 
@@ -1063,10 +1063,10 @@ entidad o objeto esta estructura se ira volviendo cada vez más inestable.
 ````
 ### Solución 
 <div align="center"> 
-<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/BehavioralPatterns/TemplateMethod/TemplateMethodUML.png?raw=true"  alt="#  ">   
+<img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/BehavioralPatterns/Strategy/StrategyUMLExample.png?raw=true"  alt="#  ">   
 </div>
 
-[Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/BehavioralPatterns/TemplateMethod/Solution)</br>
+[Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/BehavioralPatterns/Strategy/Solution)</br>
 ### Ventajas de esta estructura 
 ✔️  Cada logica concreta esta encapsulada ocultando la informacion de sus metodos y atributos especificos lo que modificarla no altera la estructura general.</br>
 ✔️  Debido a que esta estructura maneja cada algoritmo concreto como una entidad, podemos asociar estos algoritmos a otros tipos de entidades de manera escalable.</br>
