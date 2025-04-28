@@ -1,4 +1,4 @@
-# README.md file header
+
 [Español](README_ES.md) | [English](README.md)
 # Patrones y principios de Software 🦔
 
