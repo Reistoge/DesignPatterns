@@ -41,14 +41,12 @@ This repository was created for learning and educational purposes. Also Intended
 ## Design principles
 
 
-Los principios de diseño representan directrices o recomendaciones genericas para garantizar que un diseño cumple con determinadas  ````propiedades````  las cuales nos permiten entender y desarollar sistemas de mayor calidad.
-
+Design principles represent generic guidelines or recommendations to ensure that a design meets certain ````properties```` that allow us to understand and develop higher quality systems.
  
 ## Propiedades
 ### Integridad conceptual
-````Definicion````: _Un sistema no puede ser una acumulación de funcionalidades sin coherencia ni cohesión entre ellas._ </br></br>
-La integridad conceptual define estandares, convenciones y brinda consistencia al diseño de componentes y al desarrollo de un sistema, por lo tanto es de gran utilidad cuando buscamos facilitar el uso y la comprensión de un sistema por parte de sus usuarios.
-</br>
+`````Definition`````: _Un sistema no puede ser una acumulación de funcionalidades sin coherencia ni cohesión entre ellas._ </br></br>
+Conceptual integrity defines standards, conventions, and provides consistency in component design and system development. It is therefore very useful when seeking to facilitate the use and understanding of a system by its users.</br>
 
 Para seguir este principio se debe considerar
   *  Definir una convencion de codigo (ej; camelCase, snake_case)
