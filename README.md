@@ -6,10 +6,19 @@ This repository was created for learning and educational purposes. Also Intended
 
 ## Index
  * [Design Principles](#design-principles)
+ * [Properties](#propiedades)
     * [Conceptual Integrity](#integridad-conceptual)
     * [Information Hiding](#ocultamiento-de-informacion)
     * [Cohesion](#cohesion)
     * [Coupling](#acoplamiento)
+ * [SOLID Principles and Others](#principios-solid-y-otros)
+    * [Single Responsibility](#singe-responsibility-cohesion)
+    * [Open-Closed](#open-closed-extension)
+    * [Liskov Substitution](#liskov-substitution-extension)
+    * [Interface Segregation](#interface-segregation-cohesion)
+    * [Dependency Inversion](#depency-inversion-acoplamiento)
+    * [Principle of Least Privilege](#principle-of-least-privilege)
+    * [Composition over Inheritance](#composition-over-inheritance)
  * [Creational Patterns](#creational-patterns)
     * [Singleton](#singleton)
     * [Factory Method](#factory-method)
@@ -27,7 +36,9 @@ This repository was created for learning and educational purposes. Also Intended
     * [Template Method](#template-method)
     * [Visitor](#visitor)
 ------
-## Design principles [🦔](#patrones-y-principios-de-software-🦔)
+[🦔](#index)
+## Design principles
+
 
 Los principios de diseño representan directrices o recomendaciones genericas para garantizar que un diseño cumple con determinadas  ````propiedades````  las cuales nos permiten entender y desarollar sistemas de mayor calidad.
 
@@ -80,8 +91,9 @@ Este principio nos permite:
 Con esto no se busca eliminar el acoplamiento de una clase con otra, no hay problema en que una clase necesite de otras, especialmente de aquellas que usen servicios como estructura de datos, input u output, etc.
  
  ------
-## Principios SOLID y otros </br>
+## Principios SOLID y otros
 
+</br>
 Recomendaciones a nivel practico que permiten a los desarrolladores seguir las propiedades de diseño, debido a esto cada principio esta ligado a una propiedad de diseño.
 
 ### **S**ingle Responsability (Cohesión):
