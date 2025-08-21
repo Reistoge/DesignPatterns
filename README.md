@@ -1,23 +1,24 @@
 
+ 
 [Español](README_ES.md) | [English](README.md)
-# Patrones y principios de Software 🦔
+# Software Patterns and Principles 🦔
 
 ## Summary
-This repository was created for learning and educational purposes. Also Intended to collect the 23 GOF design patterns
+This repository was created for learning and educational purposes. Also intended to collect the 23 GOF design patterns
 
 ## Index
  * [Design Principles](#design-principles)
- * [Design Properties](#propiedades)
-    * [Conceptual Integrity](#integridad-conceptual)
-    * [Information Hiding](#ocultamiento-de-informacion)
+ * [Design Properties](#design-properties)
+    * [Conceptual Integrity](#conceptual-integrity)
+    * [Information Hiding](#information-hiding)
     * [Cohesion](#cohesion)
-    * [Coupling](#acoplamiento)
- * [SOLID Principles and Others](#principios-solid-y-otros)
-    * [Single Responsibility](#singe-responsibility-cohesion)
+    * [Coupling](#coupling)
+ * [SOLID Principles and Others](#solid-principles-and-others)
+    * [Single Responsibility](#single-responsibility-cohesion)
     * [Open-Closed](#open-closed-extension)
     * [Liskov Substitution](#liskov-substitution-extension)
     * [Interface Segregation](#interface-segregation-cohesion)
-    * [Dependency Inversion](#depency-inversion-acoplamiento)
+    * [Dependency Inversion](#dependency-inversion-coupling)
     * [Principle of Least Privilege](#principle-of-least-privilege)
     * [Composition over Inheritance](#composition-over-inheritance)
  * [Creational Patterns](#creational-patterns)
@@ -40,301 +41,300 @@ This repository was created for learning and educational purposes. Also Intended
 
 ## Design principles
 
-
 Design principles represent generic guidelines or recommendations to ensure that a design meets certain ````properties```` that allow us to understand and develop higher quality systems.
  
-## Propiedades
-### Integridad conceptual
-`````Definition`````: _Un sistema no puede ser una acumulación de funcionalidades sin coherencia ni cohesión entre ellas._ </br></br>
+## Design Properties
+### Conceptual Integrity
+````Definition````: _A system cannot be an accumulation of functionalities without coherence or cohesion between them._ </br></br>
 Conceptual integrity defines standards, conventions, and provides consistency in component design and system development. It is therefore very useful when seeking to facilitate the use and understanding of a system by its users.</br>
 
-Para seguir este principio se debe considerar
-  *  Definir una convencion de codigo (ej; camelCase, snake_case)
-  *  Definir el Diseño estandar para los componentes (ej: estructuras de datos que se usarán)
-  *  Definir principios de diseño a seguir a lo largo del desarrollo.</br>
+To follow this principle you should consider:
+  *  Define a code convention (e.g., camelCase, snake_case)
+  *  Define the standard design for components (e.g., data structures to be used)
+  *  Define design principles to follow throughout development.</br>
 
-Casos en los cuales un sistema no se sigue este principio.
- * Se usan distintas versiones de un Framework
- * Se resuelve un mismo tipo de problema usando otro tipo de estructuras de datos
- * Que existan distintas convenciones de codigo
+Cases where a system doesn't follow this principle:
+ * Different versions of a Framework are used
+ * The same type of problem is solved using different data structures
+ * Different code conventions exist
  
 
-### Ocultamiento de informacion
-````Definicion````: _Las clases deben ocultar detalles de implementación que estén sujetos a cambios._ </br></br>
-Encapsular o ocultar toda la informacion tampoco es una solucion, debemos tambien hacer publicos algunos detalles como los metodos para que nuestra clase sea útil y pueda comunicarse, los metodos publicos de una clase definen su interfaz y constituye su parte ````visible```` para el resto de clases y codigo externo, es por esto que debemos elaborar `````interfaces estables`````, esto se logra definiendo correctamente que metodos seran tanto publicos como privados dentro de nuestra clase.</br>
+### Information Hiding
+````Definition````: _Classes should hide implementation details that are subject to change._ </br></br>
+Encapsulating or hiding all information is also not a solution, we must also make some details public like methods so that our class is useful and can communicate. The public methods of a class define its interface and constitute its ````visible```` part for the rest of classes and external code, which is why we must elaborate `````stable interfaces`````, this is achieved by correctly defining which methods will be both public and private within our class.</br>
 
-Gracias a este principio podemos:
- * Implementar sistemas en desarrollo paralelo mucho más rapido y facil entender entre desarrolladores.
- * Hace que un sistema sea más flexible ante cambios eliminando el riesgo de que un componente efecte a todo el sistema 
- * Facilita la comprension en un sistema gracias a las interfaces.
+Thanks to this principle we can:
+ * Implement systems in parallel development much faster and easier to understand between developers.
+ * Makes a system more flexible to changes by eliminating the risk of one component affecting the entire system
+ * Facilitates understanding in a system thanks to interfaces.
 
  
  ### Cohesion
- ````Definición````: _Una clase debe de tener una unica responsabilidad e implementar un unico interes para que de esta forma tenga un solo motivo para ser modificada._  </br></br>
-Una clase que siga este principio es considerada una clase ````cohesiva```` </br>
-Este principio nos permite:
-* Implementar, comprender y mantener clases más facil
-* Facilita la asignacion de responsabilidad unica a las clases. 
-* Facilita reutilizacion y el testing de clases en el sistema.  
+ ````Definition````: _A class should have a single responsibility and implement a single interest so that it has only one reason to be modified._  </br></br>
+A class that follows this principle is considered a ````cohesive```` class </br>
+This principle allows us to:
+* Implement, understand and maintain classes more easily
+* Facilitates assigning single responsibility to classes. 
+* Facilitates class reuse and testing in the system.  
  
- ### Acoplamiento
- ````Definicion````: Mide la fuerza de conexion o dependencia entre clases   
- Tipos de acoplamiento:
-  * Aceptable: Cuando una clase A solo usa metodos publicos o la interfaz de B
-  * No aceptable: Cuando cambios en una clase A impactan facilmente a una clase B
-  * Evolutivo: Ocurre cuando los cambios en una clase B tienden propagarse a una A o alguna otra clase de manera inesperada (tiende a ser no aceptable)
-  * Estructural: Cuando una clase A tiene una referencia explícita en su código a una clase B (puede ser aceptable o no)
+ ### Coupling
+ ````Definition````: Measures the strength of connection or dependency between classes   
+ Types of coupling:
+  * Acceptable: When a class A only uses public methods or the interface of B
+  * Not acceptable: When changes in a class A easily impact a class B
+  * Evolutionary: Occurs when changes in a class B tend to propagate to an A or some other class unexpectedly (tends to be not acceptable)
+  * Structural: When a class A has an explicit reference in its code to a class B (can be acceptable or not)
 
-**¿Como evitar un acoplamiento no aceptable?** : Maximizando la cohesion y minimizando la fuerza de conexion entre clases esto es involucrando interfaces estables en la dependencias. 
+**How to avoid unacceptable coupling?**: By maximizing cohesion and minimizing the strength of connection between classes, this involves involving stable interfaces in dependencies. 
 
-Con esto no se busca eliminar el acoplamiento de una clase con otra, no hay problema en que una clase necesite de otras, especialmente de aquellas que usen servicios como estructura de datos, input u output, etc.
+This doesn't seek to eliminate coupling of one class with another, there's no problem with a class needing others, especially those that use services like data structures, input or output, etc.
  
  ------
-## Principios SOLID y otros
+## SOLID Principles and Others
 
 </br>
-Recomendaciones a nivel practico que permiten a los desarrolladores seguir las propiedades de diseño, debido a esto cada principio esta ligado a una propiedad de diseño.
+Practical recommendations that allow developers to follow design properties, due to this each principle is linked to a design property.
 
-### **S**ingle Responsability (Cohesión):
- Directamente ligada con la propiedad de cohesion y nos dice que una clase debe de tener una unica responsabilidad y un unico motivo para ser modificada.
-### Ejemplo
+### **S**ingle Responsibility (Cohesion):
+ Directly linked with the cohesion property and tells us that a class should have a single responsibility and a single reason to be modified.
+### Example
  ````java
-class Reporte {
-    public String generar() { return "Reporte"; }
-    public void imprimir() { System.out.println("Reporte"); } // mala responsabilidad
+class Report {
+    public String generate() { return "Report"; }
+    public void print() { System.out.println("Report"); } // bad responsibility
 }
 
-✖️ La clase tiene dos responsabilidades (generar un reporte e imprimir por pantalla).
+✖️ The class has two responsibilities (generate a report and print to screen).
 ````
 
 ````java
-class GeneradorReporte {
-    public String generar() { return "Reporte"; }
+class ReportGenerator {
+    public String generate() { return "Report"; }
 }
 
-class ImpresoraReporte {
-    public void imprimir(String reporte) { System.out.println(reporte); }
+class ReportPrinter {
+    public void print(String report) { System.out.println(report); }
 }
 
-✔️ Delegando las responsabilidades en distintas clases obtenemos clases con responsabilidades unicas
+✔️ By delegating responsibilities to different classes we obtain classes with single responsibilities
 ````
  ----
-### **O**pen-Closed (Extensión):
-Una clase debe estar cerrada a modificacion pero abierta a extension, en otras palabras, tu clase debe de tener la capacidad de poder agregar cosas pero sin tener que modificar la logica base de esta.
-### Ejemplo
+### **O**pen-Closed (Extension):
+A class should be closed to modification but open to extension, in other words, your class should have the capability to add things but without having to modify its base logic.
+### Example
 ````java
-class Descuento {
-    public double aplicar(double precio, String tipo) {
-        if (tipo.equals("Navidad")) return precio * 0.9;
-        else return precio;
+class Discount {
+    public double apply(double price, String type) {
+        if (type.equals("Christmas")) return price * 0.9;
+        else return price;
     }
 }
 
-✖️ Si queremos agregar otro tipo de descuento tendremos que
-   cambiar directamente la logica del metodo aplicar().
+✖️ If we want to add another type of discount we will have to
+   directly change the logic of the apply() method.
 ````
 ````java
-interface EstrategiaDescuento {
-    double aplicar(double precio);
+interface DiscountStrategy {
+    double apply(double price);
 }
 
-class DescuentoNavidad implements EstrategiaDescuento {
-    public double aplicar(double precio) { return precio * 0.9; }
+class ChristmasDiscount implements DiscountStrategy {
+    public double apply(double price) { return price * 0.9; }
 }
 
-✔️ Ahora para agregar otro tipo de descuento se debe
-    agregar una clase al sistema en vez de modificar alguna. 
+✔️ Now to add another type of discount a class should be
+    added to the system instead of modifying any. 
 ````
 ------
-### **L**iskov substitution (Extensión):
-Todos los métodos sobrescritos en una sub clase deben seguir la misma lógica o funcionalidad que el método original de la super clase.
-Este principio nos permite separar y definir una buena jerarquia entre clases padres e hijas.
+### **L**iskov Substitution (Extension):
+All overridden methods in a subclass must follow the same logic or functionality as the original method of the superclass.
+This principle allows us to separate and define a good hierarchy between parent and child classes.
 
-### Ejemplo
+### Example
 ````java
-class Ave {
-    public void volar() {}
+class Bird {
+    public void fly() {}
 }
 
-class Pinguino extends Ave {
-    public void volar() { throw new UnsupportedOperationException(); } // un pingüino no vuela :c.
+class Penguin extends Bird {
+    public void fly() { throw new UnsupportedOperationException(); } // a penguin doesn't fly :c.
 }
 
-✖️ A pesar de que un pingüino es un tipo de ave, estos no vuelan,
-   por lo tanto volar() dentro de Pingüino no respeta el contrato
-   que tiene con la clase Ave.
+✖️ Although a penguin is a type of bird, they don't fly,
+   therefore fly() within Penguin doesn't respect the contract
+   it has with the Bird class.
 ````
 
 ````java
 class Animal {}
 
-class Ave extends Animal {
-    public void volar() {}
+class Bird extends Animal {
+    public void fly() {}
 }
 
-class Pinguino extends Animal {} // No extiende de Ave
+class Penguin extends Animal {} // Doesn't extend from Bird
 
-✔️ Al crear una clase más general hacemos a pingüino
-   un tipo de Animal, de esta manera ya no tenemos
-   problemas de implementacion u contrato 
+✔️ By creating a more general class we make penguin
+   a type of Animal, this way we no longer have
+   implementation or contract problems 
 ````
 -------
-### **I**nterface segregation (Cohesión):
-No se debe forzar a implementar metodos innecsarios, las interfaces deben de ser simples, pequeñas, cohesionadas y los contratos deben de ser estables y especificos para cada cliente. 
-Digamos que distintos tipos de clientes usan solamente una parte de la implementacion de una clase o interfaz para esto es mejor la division de interfaces complejas hacia más especificas y pequeñas, de esta forma hacemos que un cliente concreto tenga que interactuar con una interfaz concreta 
-### Ejemplo
+### **I**nterface Segregation (Cohesion):
+You should not be forced to implement unnecessary methods, interfaces should be simple, small, cohesive and contracts should be stable and specific for each client. 
+Let's say different types of clients use only a part of the implementation of a class or interface, for this it's better to divide complex interfaces towards more specific and smaller ones, this way we make a concrete client have to interact with a concrete interface 
+### Example
 ````java
-interface Multifuncional {
-    void imprimir();
-    void escanear();
+interface Multifunctional {
+    void print();
+    void scan();
 }
 
-class Impresora implements Multifuncional {
-    public void imprimir() {}
-    public void escanear() {} // No necesita esto
+class Printer implements Multifunctional {
+    public void print() {}
+    public void scan() {} // Doesn't need this
 }
 
-✖️ Todas las impresoras imprimen pero no siempre escanean, es por eso que en algunas
-    implementaciones de Multifuncional el metodo imprimir() o escanear() será inutil.
+✖️ All printers print but don't always scan, that's why in some
+    implementations of Multifunctional the print() or scan() method will be useless.
 ````
 ````java
-interface Impresora {
-    void imprimir();
+interface Printer {
+    void print();
 }
 
-interface Escaner {
-    void escanear();
+interface Scanner {
+    void scan();
 }
 
-class ImpresoraBasica implements Impresora {
-    public void imprimir() {}
+class BasicPrinter implements Printer {
+    public void print() {}
 }
 
-✔️ Se crea una interfaz para cada metodo y funcionalidad en especifico, ahora las
-    clases de Impresoras las cuales solo puedan imprimir, imprimir y escanear o solo escanear
-    tendran que solamente implementar las interfaces necesarias sin que alguna tenga
-    metodos vacios o innecesarios. 
+✔️ An interface is created for each specific method and functionality, now
+    printer classes which can only print, print and scan or only scan
+    will only have to implement the necessary interfaces without any having
+    empty or unnecessary methods. 
 ````
 -------
-### **D**epency inversion (Acoplamiento):
-Este principio nos dice que prefiramos interfaces frente clases concretas ya que las interfaces son más estables, para lograr esto debemos de intercambiar las dependencias de clases concretas del cliente por interfaces o abstracciones, de esta manera mantenemos una dependencia estable entre la abstracción y el cliente.
-### Ejemplo
+### **D**ependency Inversion (Coupling):
+This principle tells us to prefer interfaces over concrete classes since interfaces are more stable. To achieve this we must exchange the concrete class dependencies of the client for interfaces or abstractions, this way we maintain a stable dependency between the abstraction and the client.
+### Example
 ````java
-class MotorGasolina {
-    public void encender() {}
+class GasolineEngine {
+    public void start() {}
 }
 
-class Auto {
-    MotorGasolina motor = new MotorGasolina();
+class Car {
+    GasolineEngine engine = new GasolineEngine();
 }
 
-✖️ La clase Auto al usar MotorGasolina depende
-   directamente de una clase concreta o implementación
-   y no de una interfaz.
-  (acoplamiento estructural no deseado)
+✖️ The Car class by using GasolineEngine depends
+   directly on a concrete class or implementation
+   and not on an interface.
+  (undesired structural coupling)
 ````
 ````java
-interface Motor {
-    void encender();
+interface Engine {
+    void start();
 }
 
-class Auto {
-    Motor motor;
+class Car {
+    Engine engine;
 
-    public Auto(Motor motor) {
-        this.motor = motor;
+    public Car(Engine engine) {
+        this.engine = engine;
     }
 }
 
-✔️  Se intercambio la dependencia concreta en Auto y ahora
-    depende de una interfaz en caso de que se crearan o cambien
-    distintas implementaciones de Motor no habran problemas en
-    Auto ya que esta depende solo de los contratos de la interfaz
-    (acoplamiento estructural deseado).
+✔️ The concrete dependency in Car was exchanged and now
+    depends on an interface in case different Engine
+    implementations are created or changed there will be no problems in
+    Car since it depends only on the interface contracts
+    (desired structural coupling).
 ````
 ----
 ### Principle of Least Privilege 
-El principio de menor privilegio o Demeter brinda un conjunto de reglas para evitar problemas de encapsulamiento.
-Sostiene que la implementacion de un metodo en un clase debe solo invocar los invocar los siguientes otros métodos:
+The principle of least privilege or Demeter provides a set of rules to avoid encapsulation problems.
+It maintains that the implementation of a method in a class should only invoke the following other methods:
 
-* De su propia clase  
-* De objetos pasados como parámetros  
-* De objetos creados por el propio método 
-* De atributos de la clase del método
-Otra forma de entender este principio es no llamar a métodos de los objetos devueltos por otros métodos.
-El caso más común que debemos evitar son las cadenas de métodos, de la forma:
+* From its own class  
+* From objects passed as parameters  
+* From objects created by the method itself 
+* From class attributes of the method
+Another way to understand this principle is not to call methods of objects returned by other methods.
+The most common case we should avoid are method chains, of the form:
 ````java
 a.getX().getY().getValue();
-✖️ Estamos accediendo a objetos internos de A encadenando llamadas.
-    Esto expone la estructura interna y rompe el encapsulamiento, haciendo que la
-    clase que hace esta llamada conozca demasiado sobre la estructura de otras.
+✖️ We are accessing internal objects of A by chaining calls.
+    This exposes the internal structure and breaks encapsulation, making the
+    class that makes this call know too much about the structure of others.
 ````
-y sustituirlas por funciones que realicen dicha acción:
+and substitute them for functions that perform said action:
 ````java
 a.getXYValue();
-✔️ Creamos un metodo especifico en A el cual encapsula la logica en
-    como se tiene que devolver el valor que queremos sin tener que
-    depender o hacer llamadas directas del objeto Y.
+✔️ We create a specific method in A which encapsulates the logic in
+    how to return the value we want without having to
+    depend on or make direct calls to the Y object.
 ````
 -----
 ### Composition over Inheritance 
-Una solucion basada en composicion sueler en la mayoria de los casos mejor una basada en herencia.
-¿Por qué?
-La herencia viola el encapsulamiento de las clases padre. La implementación de las subclases se vuelve tan acoplada a la implementación de la clase padre que cualquier cambio en estas últimas puede forzar modificaciones en las subclases.
+A composition-based solution is usually in most cases better than one based on inheritance.
+Why?
+Inheritance violates the encapsulation of parent classes. The implementation of subclasses becomes so coupled to the implementation of the parent class that any change in the latter can force modifications in the subclasses.
 
-Debido a esto existen soluciones basadas en composicion las cuales tienen como objetivo reemplazar las soluciones basadas en herencia como el patron decorador ya que hoy en dia algunos lenguajes no soportan herencia.
+Due to this there are composition-based solutions which aim to replace inheritance-based solutions like the decorator pattern since nowadays some languages don't support inheritance.
 
  
 ````java
-class BaseDeDatos {
-    public void conectar() {
-        System.out.println("Conectando a la base de datos...");
+class Database {
+    public void connect() {
+        System.out.println("Connecting to database...");
     }
 }
 
-class Aplicacion extends BaseDeDatos {
-    public void iniciar() {
-        conectar();
-        System.out.println("Aplicación iniciada.");
+class Application extends Database {
+    public void start() {
+        connect();
+        System.out.println("Application started.");
     }
 }
-class AplicacionSimple {
-    public void iniciar() {
-        System.out.println("Aplicación simple iniciada.");
+class SimpleApplication {
+    public void start() {
+        System.out.println("Simple application started.");
     }
 }
  
-✖️ Aunque se necesite los atributos de la base de datos, una aplicacion
-   no es una Base de datos, cambios u errores en la logica de la clase
-   padre se propagarán directamente a todas las clases hijas.
-   ¿Que sucedera si tenemos que añadir una clase interfaz grafica?
-   ¿hacer que extienda de nuevo de aplicacion? ¿ o de Base de datos ?
-   es inestable.
+✖️ Although database attributes are needed, an application
+   is not a Database, changes or errors in the parent class logic
+   will propagate directly to all child classes.
+   What will happen if we have to add a GUI class?
+   Make it extend again from application? or from Database?
+   it's unstable.
 ````
  
 ````java
-class BaseDeDatos {
-    public void conectar() {
-        System.out.println("Conectando a la base de datos...");
+class Database {
+    public void connect() {
+        System.out.println("Connecting to database...");
     }
 }
 
-class Aplicacion {
-    private BaseDeDatos db = new BaseDeDatos();
+class Application {
+    private Database db = new Database();
 
-    public void iniciar() {
-        db.conectar();
-        System.out.println("Aplicación iniciada.");
+    public void start() {
+        db.connect();
+        System.out.println("Application started.");
     }
 }
-class AplicacionSimple {
-    public void iniciar() {
-        System.out.println("Aplicación simple iniciada.");
+class SimpleApplication {
+    public void start() {
+        System.out.println("Simple application started.");
     }
 }
-✔️ Una aplicacion no necesita de ser una base de datos, pero puede necesitarla, es por eso que
-    hacemos que simplemente se componga o no de esta sin depender de herencia de esta manera tambien
-    nos aseguramos que agregar componentes a la clase Aplicacion no sea mediante una jerarquia de clases.
+✔️ An application doesn't need to be a database, but it can need it, that's why
+    we make it simply composed or not of this without depending on inheritance from it this way we also
+    ensure that adding components to the Application class is not through a class hierarchy.
 ````
 
 ------
@@ -342,13 +342,13 @@ class AplicacionSimple {
 <div align="center"> 
 <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/CreationalPatterns/CreationalPatterns.png?raw=true" width="600px" height="300px" alt="#  ">   
 </div>
-Patrones que proponen soluciones flexibles para la creación de objetos 
+Patterns that propose flexible solutions for object creation 
 
 ## When to use a creational pattern ?
 _In situations related to object creation or instantiation mechanisms, aiming to abstract the process so that code is flexible, reusable, and decoupled from the specific classes it needs to instantiate._
 
 ## Singleton
-> _Este patron nos asegura de que exista una instancia unica de una clase y además que sea accesible desde cualquier parte de nuestro sistema._
+> _This pattern ensures that there exists a unique instance of a class and furthermore that it is accessible from anywhere in our system._
 
 ### Example
 Let's consider a game settings manager context
@@ -394,25 +394,25 @@ class DisplayManager {
         boolean fullscreen = settings.isFullscreen();
     }
 }
-✖️ Multiples clases crean sus propias instancias de gameSettings esto puede llevar a incosistencias de datos.
-✖️ No es necesario tener que volver a inicializar los datos cada vez que se necesiten por alguna otra clase.
+✖️ Multiple classes create their own instances of gameSettings this can lead to data inconsistencies.
+✖️ It's not necessary to reinitialize data every time it's needed by some other class.
 
  
 ````
-### Solución 
+### Solution 
 
 <div align="center"> 
 <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/CreationalPatterns/Singleton/SingletonUML.png?raw=true" alt="#  ">   
 </div>
 
 [Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/CreationalPatterns/Singleton/Solution)</br>
-### Ventajas de esta estructura 
-✔️ Los datos se inicializan una sola vez o cuando sea necesario.</br>
-✔️ Hay una mejor consistencia de datos ya que existe una unica fuente de donde consultarlos y acceder a ellos.
+### Advantages of this structure 
+✔️ Data is initialized only once or when necessary.</br>
+✔️ There is better data consistency since there exists a single source from where to consult and access them.
  
 
 ## Factory Method
-> _Establece la relacion de un Creador-Producto donde cada producto tiene su creador concreto, de esta manera podemos delegar gracias a un metodo abstracto la creacion concreta de cada producto concreto creando un producto sin la necesidad de especificar tu tipo concreto._
+> _Establishes the relationship of a Creator-Product where each product has its concrete creator, this way we can delegate thanks to an abstract method the concrete creation of each concrete product creating a product without the need to specify its concrete type._
  
 ### Example
 Imagine a drawing application that needs to create different colored shapes (Red triangles, Blue circles, Green rectangles). Initially, the shapes are created directly in the client code:
@@ -451,27 +451,27 @@ public class DrawingApp {
         }
     }
 }
-✖️ Drawing app se preoucupa de crear y mostrar las figuras, debe solamente mostrar. (SRP)
-✖️ El usuario debe interectuar con una clase concreta en lugar de una interfaz 
-✖️ dificil de mantener al momento de agregar o modificar una figura implica
-tener que modificar la logica de la clase Draw la cual involucra otras figuras tambien (OCP).
+✖️ Drawing app is concerned with creating and showing shapes, it should only show. (SRP)
+✖️ The user must interact with a concrete class instead of an interface 
+✖️ difficult to maintain when adding or modifying a shape implies
+having to modify the logic of the Draw class which involves other shapes too (OCP).
 ````
-### Solución 
+### Solution 
 
 <div align="center"> 
 <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/CreationalPatterns/FactoryMethod/FactoryMethodUML.png?raw=true" alt="#  ">   
 </div>
 
 [Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/CreationalPatterns/FactoryMethod/Solution)</br>
-### Ventajas de esta estructura 
-✔️ Agregar o modificar una figura no involucra codigo externo el cual no tiene relacion con la clase en si.
-✔️ Definimos contratos concretos y estables para cada creador y figura, mantenible y seguro.
-✔️ Estamos ocultando la creacion de cada Figura ya que el cliente interactua con un Creador no un producto concreto
+### Advantages of this structure 
+✔️ Adding or modifying a shape doesn't involve external code which has no relation to the class itself.</br>
+✔️ We define concrete and stable contracts for each creator and shape, maintainable and safe.</br>
+✔️ We are hiding the creation of each Shape since the client interacts with a Creator not a concrete product</br>
  
 ## Abstract Factory
    
    > _Provides an interface for creating families of related objects without specifying their concrete classes_.<br/>
-   > _Ofrece una interfaz para crear familias de objetos relacionados y sin especificar sus clases concretas_.
+   > _Offers an interface for creating families of related objects without specifying their concrete classes_.
   <div align="center"  > <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/CreationalPatterns/AbstractFactory/dpcs_af-432075449.png?raw=true"   alt="#  ">  </div>
 
 ### Example:
@@ -501,89 +501,89 @@ public class VideoGameStore {
         throw new IllegalArgumentException("Unknown brand");
     }
 }
-✖️ Agregar una consola o control implica modificar el codigo base
-✖️ La clase no tiene una responsabilidad unica
-✖️ La clase depende de clases concretas y no de abstracciones o interfaces.
+✖️ Adding a console or controller implies modifying the base code
+✖️ The class doesn't have a single responsibility
+✖️ The class depends on concrete classes and not on abstractions or interfaces.
 ````
-### Solucion 
+### Solution 
 <div align="center"> 
 <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/CreationalPatterns/AbstractFactory/AbstractFactory.drawio.png?raw=true" width="800px" height="500px" alt="#  ">
 </div>
 
 [Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/CreationalPatterns/AbstractFactory)</br>
-### Ventajas de esta estructura
-✔️ Cliente interactua solo con las interfaces o abstracciones estables.</br>
-✔️ Facilita la agregacion y mantencion a la hora de implementar nuevos tipos de controles, consolas e incluso otro tipo de productos.
+### Advantages of this structure
+✔️ Client interacts only with stable interfaces or abstractions.</br>
+✔️ Facilitates addition and maintenance when implementing new types of controllers, consoles and even other types of products.
 
 #### Concrete Factories : ````NintendoFactory````,````MicrosoftFactory````,````SonyFactory````
 #### Concrete Products A: ````NintendoSwitch````,````XboxSeriesX````,````Playstation5````
 #### Concrete Products B: ````ProController````,````XboxController````,````DualShock5````
 
 ## Builder
-> _Nos permite simplificar el constructor de un objeto cuando es complejo permitiendonos abstraer sus distintas formas de construccion simplificando las diferentes implementaciones de construcción del objeto._
+> _Allows us to simplify the constructor of an object when it is complex allowing us to abstract its different forms of construction simplifying the different construction implementations of the object._
  
 ### Example
 Imagine a drawing application that needs to create different colored shapes (Red triangles, Blue circles, Green rectangles). Initially, the shapes are created directly in the client code:
 
 ````java
-public class Personaje {
-    private String nombre;
-    private String dialogo;
-    private String tipo;
-    private String descripcion;
-    private float nivel;
-    private float peso;
-    private float experiencia;
-    private float ataque;
-    private float defensa;
-    private float velocidad;
+public class Character {
+    private String name;
+    private String dialogue;
+    private String type;
+    private String description;
+    private float level;
+    private float weight;
+    private float experience;
+    private float attack;
+    private float defense;
+    private float speed;
 
-    Personaje(String nombre, String dialogo, String tipo, String descripcion, float nivel, float peso, float experiencia, float ataque, float defensa, float velocidad) {
-        this.nombre = nombre;
-        this.dialogo = dialogo;
-        this.tipo = tipo;
-        this.descripcion = descripcion;
-        this.nivel = nivel;
-        this.peso = peso;
-        this.experiencia = experiencia;
-        this.ataque = ataque;
-        this.defensa = defensa;
-        this.velocidad = velocidad;
+    Character(String name, String dialogue, String type, String description, float level, float weight, float experience, float attack, float defense, float speed) {
+        this.name = name;
+        this.dialogue = dialogue;
+        this.type = type;
+        this.description = description;
+        this.level = level;
+        this.weight = weight;
+        this.experience = experience;
+        this.attack = attack;
+        this.defense = defense;
+        this.speed = speed;
     }
 
     @Override
     public String toString() {
-        return "nombre: "  + this.nombre + "\n"+
-                "dialogo: "  + this.dialogo+ "\n"+
-                "tipo: "  + this.tipo+ "\n"+
-                "descripcion: "  + this.descripcion+ "\n"+
-                "nivel: "  + this.nivel + "\n"+
-                "peso: "  + this.peso+ "\n"+
-                "experiencia: "  + this.experiencia+ "\n"+
-                "ataque: "  + this.ataque+ "\n"+
-                "defensa: "  + this.defensa + "\n"+
-                "velocidad: "  + this.velocidad;
+        return "name: "  + this.name + "\n"+
+                "dialogue: "  + this.dialogue+ "\n"+
+                "type: "  + this.type+ "\n"+
+                "description: "  + this.description+ "\n"+
+                "level: "  + this.level + "\n"+
+                "weight: "  + this.weight+ "\n"+
+                "experience: "  + this.experience+ "\n"+
+                "attack: "  + this.attack+ "\n"+
+                "defense: "  + this.defense + "\n"+
+                "speed: "  + this.speed;
     }
 
-    // ..... setters y getters
+    // ..... setters and getters
 
  
 }
-✖️ El constructor es muy complejo y esta saturado de parametros
-✖️ Se necesita una manera de que construir este objeto sea más simple
-✖️ Si buscamos combinaciones de constructores con distintos parametros,
- dejarlos vacios no es una solucion escalable y crear uno por uno tampoco.
+✖️ The constructor is very complex and saturated with parameters
+✖️ A way to make constructing this object simpler is needed
+✖️ If we seek constructor combinations with different parameters,
+ leaving them empty is not a scalable solution and creating one by one isn't either.
 ````
-### Solución 
+### Solution 
 
 <div align="center"> 
 <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/CreationalPatterns/Builder/BuilderUML.png?raw=true" alt="#  ">   
 </div>
 
 [Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/CreationalPatterns/FactoryMethod/Solution)</br>
-### Ventajas de esta estructura 
-✔️ Se simplifico la construccion del objeto ya que ahora puede ser inicializado con la combinacion de parametros que el cliente desee.</br>
-✔️ Agregar un atributo a la construccion de un objeto es mucho más escalable y estable ya que no tenemos que preocuparnos de nuevas combinaciones.
+### Advantages of this structure 
+✔️ Object construction was simplified since it can now be initialized with the combination of parameters the client desires.</br>
+✔️ Adding an attribute to object construction is much more scalable and stable since we don't have to worry about new combinations.
 
 -------
 
@@ -591,13 +591,13 @@ public class Personaje {
 <div align="center"> 
 <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/StructuralPatterns/StructuralPatterns.png?raw=true" width="391px" height="292px" alt="#  ">   
 </div>
-Patrones que proponen soluciones flexibles para la composición de clases y objetos
+Patterns that propose flexible solutions for the composition of classes and objects
 
 ## When to use a Structural pattern ?
-_En situaciones las cuales involucren la encapsulacion de composicion de objetos o tambien dinamismo y flexibilidad en la composicion de un objeto como que sea sencillo sustituir la composicion de un objeto por otro._ 
+_In situations which involve encapsulation of object composition or also dynamism and flexibility in object composition such as making it easy to substitute an object's composition for another._ 
 
 ## Proxy
-> _Busca sustituir a un objeto (sujeto) y controlar su acceso mediante una clase que implemente la misma interfaz que el sujeto._
+> _Seeks to substitute an object (subject) and control its access through a class that implements the same interface as the subject._
  
 ### Example
 You need to show a preview of an asset (maybe a thumbnail or a name),
@@ -627,22 +627,22 @@ public class SimpleAssetLoader {
         return name.toUpperCase() + ".PROCESSED";
     }
 }
-✖️ Existe un metodo de alto costo no controlado
-    el cual además no necesita ser llamado todas las veces
+✖️ There exists an uncontrolled high-cost method
+    which furthermore doesn't need to be called every time
 ````
-### Solución 
+### Solution 
 <div align="center"> 
 <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/StructuralPatterns/Proxy/ProxyUML.png?raw=true" width="500px" height="300px" alt="#  ">   
 </div>
 
 [Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/StructuralPatterns/Proxy/Solution)</br>
-### Ventajas de esta estructura 
-✔️ Estamos controlando los contratos de concretos AssetLoader sin tener 
-que modificar su codigo base de esta manera podemos ejecutar sus metodos
-bajo las condiciones de AssetLoaderProxy ya que estas dos implementan una misma interfaz.
+### Advantages of this structure 
+✔️ We are controlling the contracts of concrete AssetLoader without having 
+to modify its base code this way we can execute its methods
+under the conditions of AssetLoaderProxy since both implement the same interface.
        
 ## Decorator
-> _Se usa principalmente cuando queremos agregar o añadir nuevas funcionalidades a uno o varios tipos de componentes de manera dinamica._
+> _Used mainly when we want to add or add new functionalities to one or several types of components dynamically._
 
 ### Example
 A small food truck sells Chilean Completos (hot dogs)
@@ -707,29 +707,29 @@ public class ChileanCompleto {
     public void setSausageType(String type) { this.sausageType = type; }
 }
 ````
-### Solución
+### Solution
 <div align="center"> 
 <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/StructuralPatterns/Decorator/DecoratorUML.png?raw=true"  alt="#  ">   
 </div>
 
 [Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/StructuralPatterns/Decorator/Solution)</br>
-En este caso, queremos que un componente y sus ingredientes tengan
-un precio price() y un display() en el programa. Debemos establecer 
-esto porque, al decir esto, podemos crear una única interfaz tanto 
-para el componente (Componente) como para los ingredientes (Decorador). 
-Ahora comenzamos a implementar la estructura del decorador en nuestra solución.
+In this case, we want a component and its ingredients to have
+a price() and a display() in the program. We must establish 
+this because, by saying this, we can create a single interface for both 
+the component (Component) and the ingredients (Decorator). 
+Now we start implementing the decorator structure in our solution.
 
-1. Crear la interfaz **IComponent** o **AbstractComponent**
-2. Crear una clase abstracta **Decorator**
-3. Crear todos los componentes concretos y que la clase Decorator implemente la interfaz IComponent
-4. Dentro de la clase Decorator, agregar un campo de tipo IComponent llamado "component"
-y delegar cada llamada de los métodos de implementación al componente
-(ej: dentro de method1() -> component.method1())
-5. Crear una clase ConcreteDecorator que extienda de Decorator
-y que sobrescriba cada llamada a un método llamando primero al mismo método de la superclase.
+1. Create the **IComponent** or **AbstractComponent** interface
+2. Create an abstract **Decorator** class
+3. Create all concrete components and make the Decorator class implement the IComponent interface
+4. Inside the Decorator class, add a field of type IComponent called "component"
+and delegate each call of the implementation methods to the component
+(e.g., inside method1() -> component.method1())
+5. Create a ConcreteDecorator class that extends Decorator
+and overrides each method call by first calling the same method of the superclass.
 
 ## Adapter
-> _Nos provee de una interfaz intermediaria para que una clase la cual sea incompatible pueda integrarse a nuestra estructura sin modificar el codigo original_.  
+> _Provides us with an intermediate interface so that an incompatible class can integrate into our structure without modifying the original code_.  
  
 ### Example
 Your app was initially built to work with WeatherServiceA,
@@ -756,25 +756,25 @@ public class WeatherServiceB {
 }
 
 ````
-### Solución 
+### Solution 
 
 <div align="center"> 
 <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/StructuralPatterns/Adapter/AdapterUML.png?raw=true" alt="#  ">   
 </div>
 
 [Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/StructuralPatterns/Adapter/Solution)</br>
-### Ventajas de esta estructura 
-✔️ Mediante Inversion de dependencias y segregacion de interfaces 
-logramos compatibilizar funcionalidades a nuestro sistema creando
-una interfaz sin alterar el codigo original.</br>
+### Advantages of this structure 
+✔️ Through Dependency Inversion and Interface Segregation 
+we manage to make functionalities compatible with our system by creating
+an interface without altering the original code.</br>
 
 -----
 ## Facade
-> _Nos provee de una clase o interfaz la cual busca simplificar el uso de multiples subsistemas de manera especifica o compleja en una sola interfaz la cual sea más simple trabajar con este conjunto_.  
+> _Provides us with a class or interface which seeks to simplify the use of multiple subsystems in a specific or complex way into a single interface which is simpler to work with this set_.  
  
 ### Example
-You`re building a media player system, to play a song you have to manually
-decoding, buffering this creates tight coupling between the high-level
+You're building a media player system, to play a song you have to manually
+decode, buffer this creates tight coupling between the high-level
 application logic and the low level subsystems.
 
  
@@ -809,36 +809,36 @@ public class MediaPlayer {
         driver.playSound();
     }
 }
-✖️ Para un metodo estamos invocando directamente muchos subsistemas como si de una plantilla o inicializacion se tratase, a medida de que nuestro codigo vaya creciendo esto cada vez será más complejo entender.
-✖️ No es necesario tener que inicializar de nuevo los componentes cada vez que se llame este metodo ya que no es parte de la construcción de este.
-✖️ Si la inicializacion de un subsistema es muy complejo el codigo será muy dificil de entender y nuestra clase tendra más razones para ser modificada. 
+✖️ For one method we are directly invoking many subsystems as if it were a template or initialization, as our code grows this will increasingly be more complex to understand.
+✖️ It's not necessary to reinitialize components every time this method is called since it's not part of constructing this.
+✖️ If the initialization of a subsystem is very complex the code will be very difficult to understand and our class will have more reasons to be modified. 
 ````
-### Solución 
-En lugar de usar N subsistemas o interfaces concretos en el mismo código de cliente, se crea una clase "Fachada" que proporciona una interfaz simplificada a los subsistemas. De esta manera, se reduce la complejidad del código de cliente, de modo que el cliente solo llama a los métodos de la fachada, y esta se encarga de llamar a los subsistemas.
+### Solution 
+Instead of using N subsystems or concrete interfaces in the same client code, a "Facade" class is created that provides a simplified interface to the subsystems. This way, the complexity of the client code is reduced, so that the client only calls the facade methods, and this takes care of calling the subsystems.
 
 <div align="center"> 
 <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/StructuralPatterns/Facade/FacadeUML.png?raw=true" alt="#  ">   
 </div>
 
 [Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/StructuralPatterns/Facade/Solution)</br>
-### Ventajas de esta estructura 
-✔️ Mediante composicion y agregacion los componentes se inicializan solo cuando sea realmente necesario.</br>
-✔️ Reducimos la complejidad del metodo turnOnMediaPlayer() encapsulando y ocultando la inicializacion especifica de cada componente.</br>
+### Advantages of this structure 
+✔️ Through composition and aggregation components are initialized only when really necessary.</br>
+✔️ We reduce the complexity of the turnOnMediaPlayer() method by encapsulating and hiding the specific initialization of each component.</br>
 
 -----
 ## Behavioral Patterns
 <div align="center"> 
 <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/BehavioralPatterns/BehavioralPatterns.png?raw=true" alt="#  ">   
 </div>
-Patrones que proponen soluciones flexibles para la interacción y división de responsabilidades entre clases y objetos
+Patterns that propose flexible solutions for interaction and division of responsibilities between classes and objects
 
 ## When to use a Behavioral pattern ?
-_En situaciones las cuales involucren distribuir o controlar el procesamiento y algoritmos entre objetos o tambien cuando se busque especificar flujos y procesamientos dinamicos de un sistema de objetos._ 
+_In situations which involve distributing or controlling processing and algorithms between objects or also when seeking to specify dynamic flows and processing of an object system._ 
 
 ## Visitor
-> Permite la agregacion o construccion de nuevas operaciones y funcionalidades (visitores) que deben realizarse sobre los elementos de un conjunto de objetos (elementos) sin la necesidad de modificar su clase.
+> Allows the addition or construction of new operations and functionalities (visitors) that must be performed on the elements of a set of objects (elements) without the need to modify their class.
 
-### Ejemplo
+### Example
 A museum needs to manage different types of artworks 
 (Paint, Sculpture, Photograph) and perform various 
 operations on them like generating reports,
@@ -878,31 +878,31 @@ public class Artwork {
         }
     }
 }
-✖️ No se esta ocultando correctamente la informacion de cada elemento y
-   además siempre que tengamos que agregar una funcionalidad u operación
-   tendremos que modificar el codigo base de Artwork el cual involucra
-   todos los demas elementos innecesariamente
+✖️ Information from each element is not being properly hidden and
+   furthermore whenever we have to add a functionality or operation
+   we will have to modify the base code of Artwork which involves
+   all other elements unnecessarily
    
 ````
-### Solución 
-1. Crear una interfaz para los elementos que se le aplicara una logica (IElement) y el visitante que aplica la logica a los elementos (IVisitor)
-2. Para la interfaz del visitante:
-    1. Nuestra interfaz debe ser **capaz** de que en un solo metodo pueda 
-       aceptar y aplicar una logica distinta sobre IElementos concretos es por eso que se debemos **añadir
-       el mismo metodo accept()** pero soportado para **diferentes parametros** que seria 
-       cada tipo concreto de elementos.
+### Solution 
+1. Create an interface for the elements that will have logic applied to them (IElement) and the visitor that applies logic to the elements (IVisitor)
+2. For the visitor interface:
+    1. Our interface must be **capable** that in a single method it can 
+       accept and apply different logic on concrete IElements that's why we must **add
+       the same accept() method** but supported for **different parameters** which would be 
+       each concrete type of elements.
        ````java
-       accept(C1 elemento1);
-       accept(C2 elemento2);
-       accept(C3 elemento3);
+       accept(C1 element1);
+       accept(C2 element2);
+       accept(C3 element3);
        ````
            
-3. Para la interfaz de Elemento:
-   1. añadir un metodo
+3. For the Element interface:
+   1. add a method
    ````java
     visit(IVisitor v);
    ````
-   3. dentro de cada elemento concreto es importante que dentro del cuerpo de la funcion este implementado de esta forma
+   3. inside each concrete element it's important that inside the function body this is implemented this way
    ````java
     v.visit(this)
    ````
@@ -913,16 +913,16 @@ public class Artwork {
 </div>
 
 [Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/BehavioralPatterns/Visitor/Solution)</br>
-### Ventajas de esta estructura 
-✔️ Gracias a la estructura de este patron cada tipo de elemento se redirigira automaticamente al visitor ejecutando su metodo de tipo correspondiente, de esta  manera cuando tengamos que añadir una funcionalidad para los elementos debemos simplemente crear una clase cual implemente la interfaz visitor e ir a añadiendo la nueva funcionalidad para cada elemento por separado.
+### Advantages of this structure 
+✔️ Thanks to the structure of this pattern each type of element will automatically redirect to the visitor executing its corresponding type method, this way when we have to add functionality for the elements we must simply create a class which implements the visitor interface and go adding the new functionality for each element separately.
 
-### Detalle
-😔 El patron visitor por otro lado tiene una gran desventaja y es cuando nosotros necesitemos agregar nuevos elementos a nuestra estructura ya que supondrá  modificar la interfaz visitor y a todas sus implementaciones (acoplamiento evolutivo).
+### Detail
+😔 The visitor pattern on the other hand has a great disadvantage and that's when we need to add new elements to our structure since it will suppose modifying the visitor interface and all its implementations (evolutionary coupling).
 
 ## Observer
-> Permite definir mecanismos suscripcion dinamicos para notificar eventos a multiples objetos los cuales observan o escuchan a un Sujeto    
+> Allows defining dynamic subscription mechanisms to notify events to multiple objects which observe or listen to a Subject    
 
-### Ejemplo
+### Example
 A multimedia application needs to update and notify different types
 of users (Windows, Android, iPhone) about new app versions and messages.
 Initially, the updates are handled through direct method calls.
@@ -976,28 +976,28 @@ public class MultimediaApp {
         }
     }
 }
-✖️ Modificar o añadir una logica especifica a un observador implica cambiar la logica dentro
-de donde se notifica a todos los demas, no se respeta SRP.
-✖️ No hay una definicion de contratos o una definicion concreta para cada tipo de observador
+✖️ Modifying or adding specific logic to an observer implies changing the logic within
+where all others are notified, SRP is not respected.
+✖️ There's no definition of contracts or a concrete definition for each type of observer
 
 
    
 ````
-### Solución 
+### Solution 
 <div align="center"> 
 <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/BehavioralPatterns/Observer/ObserverUML.png?raw=true"  alt="#  ">   
 </div>
 
 [Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/BehavioralPatterns/Observer/Solution)</br>
-### Ventajas de esta estructura 
-✔️ Podemos añadir observadores y sujetos sin la necesidad de modificar o alterar la logica base (Acoplamiento)</br>
-✔️ Podemos añadir o modificar la logica especifica a cada observador en la manera que es actualizado y como notifica cada sujeto a sus observadores (encapsulamiento).</br>
-✔️ Gracias a esta estructura es mucho más simple y mantenible hacer combinaciones entre sujetos y observadores ya que se comunican mediante una interfaz.(integridad conceptual)</br>
+### Advantages of this structure 
+✔️ We can add observers and subjects without the need to modify or alter the base logic (Coupling)</br>
+✔️ We can add or modify the specific logic to each observer in the way it is updated and how each subject notifies its observers (encapsulation).</br>
+✔️ Thanks to this structure it's much simpler and maintainable to make combinations between subjects and observers since they communicate through an interface.(conceptual integrity)</br>
 
 ## Template Method
-> Permite definir el esqueleto o plantilla de un algoritmo el cual además se compone de procesos abstractos los cuales apliquen una logica distinta.  
+> Allows defining the skeleton or template of an algorithm which furthermore is composed of abstract processes which apply different logic.  
 
-### Ejemplo
+### Example
 A scientific calculation system needs to process different
 mathematical formulas. Each formula follows a similar three-step
 calculation pattern but with different mathematical operations.
@@ -1026,28 +1026,28 @@ public class ScientificCalculation {
         return (step1 * step2) + step3;
     }
 }
-✖️ Cada vez que añadamos un proceso nuevo tendremos que volver a escribir el codigo plantilla (acoplamiento no aceptable)
-✖️ Si tenemos muchos procesos y decidimos cambiar el codigo plantilla romperiamos con
-la estructura de nuestro sistema, teniendo que ir a actualizar cada proceso concreto (acoplamiento evolutivo, OCP)
+✖️ Every time we add a new process we will have to rewrite the template code (unacceptable coupling)
+✖️ If we have many processes and decide to change the template code we would break with
+the structure of our system, having to go update each concrete process (evolutionary coupling, OCP)
 
 
    
 ````
-### Solución 
+### Solution 
 <div align="center"> 
 <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/BehavioralPatterns/TemplateMethod/TemplateMethodUML.png?raw=true"  alt="#  ">   
 </div>
 
 [Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/BehavioralPatterns/TemplateMethod/Solution)</br>
-### Ventajas de esta estructura 
-✔️ No tenemos que estar reescribiendo la formula cada vez que creamos un proceso nuevo.</br>
-✔️ Ahora es más escalable debido a que si queremos cambiar la formula base tenemos que simplemente cambiar la dentro del metodo ````templateMethod()````.</br>
-✔️ Cada proceso esta encapsulado y oculta su informacion tanto de atributos como de metodos de una manera la cual puedan modificarse sin tener que alterar la estructura general.</br>
+### Advantages of this structure 
+✔️ We don't have to be rewriting the formula every time we create a new process.</br>
+✔️ Now it's more scalable because if we want to change the base formula we simply have to change it within the ````templateMethod()```` method.</br>
+✔️ Each process is encapsulated and hides its information both attributes and methods in a way that they can be modified without having to alter the general structure.</br>
 
 ## Strategy
-> Nos permite definir una estrucutra el cual seleccionar en tiempo de ejecucion que tipo de algoritmo se ejecutara para un proceso concreto.   
+> Allows us to define a structure which selects at runtime what type of algorithm will be executed for a concrete process.   
 
-### Ejemplo
+### Example
 A sorting application needs to handle different types
 of sorting for integers and strings.
 
@@ -1082,23 +1082,20 @@ public class SortingApp {
         return result;
     }
 }
-✖️ La logica de cada algoritmo no esta encapsulada, debemos modificar
-la estructura general siempre que queramos modificar cualquiera de los algoritmos
-✖️ Cuando queramos asociar un tipo de algoritmo especifico a una
-entidad o objeto esta estructura se ira volviendo cada vez más inestable.
+✖️ The logic of each algorithm is not encapsulated, we must modify
+the general structure whenever we want to modify any of the algorithms.
+✖️ When we want to associate a specific type of algorithm to an
+entity or object this structure will become increasingly unstable.
 
 
    
 ````
-### Solución 
+### Solution 
 <div align="center"> 
 <img src="https://github.com/Reistoge/DesignPatterns/blob/main/src/BehavioralPatterns/Strategy/StrategyUMLExample.png?raw=true"  alt="#  ">   
 </div>
 
 [Code](https://github.com/Reistoge/DesignPatterns/tree/main/src/BehavioralPatterns/Strategy/Solution)</br>
-### Ventajas de esta estructura 
-✔️  Cada logica concreta esta encapsulada ocultando la informacion de sus metodos y atributos especificos lo que modificarla no altera la estructura general.</br>
-✔️  Debido a que esta estructura maneja cada algoritmo concreto como una entidad, podemos asociar estos algoritmos a otros tipos de entidades de manera escalable.</br>
-
-
- 
+### Advantages of this structure 
+✔️ Each concrete logic is encapsulated hiding the information of its specific methods and attributes so modifying it doesn't alter the general structure.</br>
+✔️ Because this structure handles each concrete algorithm as an entity, we can associate these algorithms to other types of entities in a scalable way.</br>
